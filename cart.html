@@ -3,34 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>سلة التسوق - متجري</title>
+    <title>سلة التسوق - ميم نون</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="logo">
-                <h2><i class="fas fa-store"></i> متجري</h2>
+                <h2><i class="fas fa-store"></i> ميم نون</h2>
             </div>
             <nav class="nav">
                 <a href="index.html">الرئيسية</a>
                 <a href="products.html">المنتجات</a>
                 <a href="cart.html">سلة التسوق</a>
-                <a href="#contact">تواصل معنا</a>
+                <a href="about.html">عن المتجر</a>
+                <a href="contact.html">اتصل بنا</a>
             </nav>
             <div class="user-menu" onclick="toggleUserMenu()">
-    <i class="fas fa-user"></i>
-    <span id="userName">الدخول</span>
-</div>
+                <i class="fas fa-user"></i>
+                <span id="userName">الدخول</span>
+            </div>
             <div class="menu-toggle"><i class="fas fa-bars"></i></div>
         </div>
     </header>
 
-    <!-- Cart Section -->
     <section class="cart-section">
         <div class="container">
             <h2 class="section-title">سلة التسوق</h2>
@@ -66,7 +65,7 @@
                     </div>
                     <div class="checkout-actions">
                         <button class="clear-cart" id="clearCart">إفراغ السلة</button>
-                        <a href="https://wa.me/218912345678?text=مرحبا، أريد إتمام طلبي" class="cta-btn checkout-btn">
+                        <a href="https://wa.me/218931931419?text=مرحبا، أريد إتمام طلبي" class="cta-btn checkout-btn">
                             إتمام الطلب <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
@@ -75,15 +74,20 @@
         </div>
     </section>
 
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/218912345678" class="whatsapp-btn" target="_blank">
+    <a href="https://wa.me/218931931419" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Footer -->
+    <div id="productModal" class="product-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="productModalBody"></div>
+        </div>
+    </div>
+
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 متجري. جميع الحقوق محفوظة.</p>
+            <p>&copy; 2026 ميم نون. جميع الحقوق محفوظة.</p>
             <div class="social-links">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
@@ -92,44 +96,27 @@
         </div>
     </footer>
 
-    <!-- Product Modal -->
-    <div id="productModal" class="product-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div id="productModalBody"></div>
-        </div>
-    </div>
-
     <script src="script.js"></script>
     <script>
-        // Initialize cart page
         document.addEventListener('DOMContentLoaded', function() {
             loadCartPage();
         });
 
         function loadCartPage() {
             const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            const cartCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            const cartCounter = document.querySelector('.cart-count');
-            
-            if (cartCounter) cartCounter.textContent = cartCount;
-
             if (cart.length === 0) {
                 document.getElementById('cartEmpty').style.display = 'block';
                 document.getElementById('cartItems').style.display = 'none';
                 return;
             }
-
             document.getElementById('cartEmpty').style.display = 'none';
             document.getElementById('cartItems').style.display = 'block';
-
             renderCartItems(cart);
         }
 
         function renderCartItems(cart) {
             const cartRows = document.getElementById('cartRows');
             let subtotal = 0;
-
             cartRows.innerHTML = cart.map(item => {
                 const total = item.price * item.quantity;
                 subtotal += total;
@@ -157,7 +144,6 @@
                     </div>
                 `;
             }).join('');
-
             const shipping = 15;
             document.getElementById('subtotal').textContent = subtotal + ' د.ل';
             document.getElementById('total').textContent = (subtotal + shipping) + ' د.ل';
@@ -166,7 +152,6 @@
         document.getElementById('clearCart')?.addEventListener('click', function() {
             localStorage.removeItem('cart');
             loadCartPage();
-            updateCartCounter();
             showToast('تم إفراغ السلة');
         });
     </script>
