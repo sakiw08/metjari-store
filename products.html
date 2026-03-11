@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>المنتجات - متجري</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header كامل -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h2><i class="fas fa-store"></i> متجري</h2>
+            </div>
+            <nav class="nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="products.html">المنتجات</a>
+    <a href="cart.html">سلة التسوق</a>
+    <a href="about.html">عن المتجر</a>
+    <a href="contact.html">اتصل بنا</a>
+</nav>
+            <div class="user-menu" onclick="toggleUserMenu()">
+                <i class="fas fa-user"></i>
+                <span id="userName">الدخول</span>
+            </div>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- Filter Section -->
+    <section class="filters">
+        <div class="container">
+            <div class="filter-group">
+                <select id="categoryFilter">
+                    <option value="all">جميع الفئات</option>
+                    <option value="phones">الهواتف</option>
+                    <option value="laptops">اللاب توب</option>
+                    <option value="accessories">الإكسسوارات</option>
+                </select>
+                <select id="priceFilter">
+                    <option value="all">جميع الأسعار</option>
+                    <option value="under500">أقل من 500 د.ل</option>
+                    <option value="500-1000">500-1000 د.ل</option>
+                    <option value="over1000">أكثر من 1000 د.ل</option>
+                </select>
+                <input type="text" id="searchInput" placeholder="ابحث عن منتج...">
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="products">
+        <div class="container">
+            <h2 class="section-title">جميع المنتجات</h2>
+            <div class="products-grid" id="productsGrid">
+                <!-- سيتم ملؤها بالـ JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp Button -->
+    <a href="https://wa.me/218912345678" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- Product Modal -->
+    <div id="productModal" class="product-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="productModalBody"></div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 متجري. جميع الحقوق محفوظة.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

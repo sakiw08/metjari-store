@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول - متجري</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo"><h2><i class="fas fa-store"></i> متجري</h2></div>
+            <nav class="nav">
+    <a href="index.html">الرئيسية</a>
+    <a href="products.html">المنتجات</a>
+    <a href="cart.html">سلة التسوق</a>
+    <a href="about.html">عن المتجر</a>
+    <a href="contact.html">اتصل بنا</a>
+</nav>
+            <div class="user-menu">
+                <i class="fas fa-user"></i>
+                <span id="userName">الدخول</span>
+            </div>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="tab-btn active" onclick="showTab('login')">تسجيل الدخول</button>
+                    <button class="tab-btn" onclick="showTab('register')">إنشاء حساب</button>
+                </div>
+                
+                <!-- تسجيل الدخول -->
+                <div id="loginTab" class="auth-tab active">
+                    <h2>مرحباً بعودتك</h2>
+                    <p>قم بتسجيل الدخول لإدارة طلباتك</p>
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="loginEmail" placeholder="البريد الإلكتروني" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="loginPassword" placeholder="كلمة المرور" required>
+                        </div>
+                        <button type="submit" class="auth-btn">تسجيل الدخول</button>
+                    </form>
+                </div>
+
+                <!-- إنشاء حساب -->
+                <div id="registerTab" class="auth-tab">
+                    <h2>إنشاء حساب جديد</h2>
+                    <p>سجل معنا للحصول على تجربة تسوق أفضل</p>
+                    <form id="registerForm">
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="regName" placeholder="الاسم الكامل" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="regPhone" placeholder="رقم الهاتف" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="regEmail" placeholder="البريد الإلكتروني" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="regPassword" placeholder="كلمة المرور" required>
+                        </div>
+                        <button type="submit" class="auth-btn">إنشاء الحساب</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 متجري. جميع الحقوق محفوظة.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // تسجيل الدخول والتسجيل
+        document.getElementById('loginForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            const user = {email, password, loginTime: new Date()};
+            localStorage.setItem('currentUser', JSON.stringify(user));
+            showToast('✅ تم تسجيل الدخول بنجاح');
+            setTimeout(() => window.location.href = 'index.html', 1000);
+        });
+
+        document.getElementById('registerForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            const user = {
+                name: document.getElementById('regName').value,
+                phone: document.getElementById('regPhone').value,
+                email: document.getElementById('regEmail').value,
+                password: document.getElementById('regPassword').value,
+                registerTime: new Date()
+            };
+            
+            localStorage.setItem('users', JSON.stringify([...getUsers(), user]));
+            showToast('✅ تم إنشاء الحساب بنجاح');
+            showTab('login');
+        });
+
+        function getUsers() {
+            return JSON.parse(localStorage.getItem('users')) || [];
+        }
+
+        function showTab(tabName) {
+            document.querySelectorAll('.auth-tab').forEach(tab => tab.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            
+            document.getElementById(tabName + 'Tab').classList.add('active');
+            event.target.classList.add('active');
+        }
+    </script>
+</body>
+</html>

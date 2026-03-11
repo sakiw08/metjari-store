@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>عن المتجر - متجري</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo"><h2><i class="fas fa-store"></i> ميم نون</h2></div>
+            <nav class="nav">
+                <a href="index.html">الرئيسية</a>
+                <a href="products.html">المنتجات</a>
+                <a href="cart.html">سلة التسوق</a>
+                <a href="about.html" class="active">عن المتجر</a>
+                <a href="contact.html">اتصل بنا</a>
+            </nav>
+            <div class="user-menu" onclick="toggleUserMenu()">
+                <i class="fas fa-user"></i>
+                <span id="userName">الدخول</span>
+            </div>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="about-hero">
+        <div class="container">
+            <h1>مرحباً بك في <span>ميم نون</span></h1>
+            <p>أكبر متجر إلكتروني في ليبيا بإذن الله</p>
+        </div>
+    </section>
+
+    <section class="about-stats">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <i class="fas fa-users"></i>
+                    <h3>10,000+</h3>
+                    <p>زبائن سعيدين</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-box"></i>
+                    <h3>50,000+</h3>
+                    <p>منتج مباع</p>
+                </div>
+                <div class="stat-item">
+                    <i class="fas fa-shipping-fast"></i>
+                    <h3>24 ساعة</h3>
+                    <p>توصيل سريع</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="about-story">
+        <div class="container">
+            <div class="story-content">
+                <img src="https://images.unsplash.com/photo-1556742049-ba779927cc62?w=600" alt="فريق العمل" class="story-img">
+                <div class="story-text">
+                    <h2>قصتنا</h2>
+                    <p>ميم نون لكل طلبية توصل بالنون .</p>
+                    <div class="features">
+                        <div class="feature"><i class="fas fa-shield-alt"></i><span>ضمان الجودة</span></div>
+                        <div class="feature"><i class="fas fa-credit-card"></i><span>دفع آمن</span></div>
+                        <div class="feature"><i class="fas fa-headset"></i><span>دعم 24/7</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp + Modal + Footer -->
+    <a href="https://wa.me/218912345678" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <div id="productModal" class="product-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="productModalBody"></div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 متجري. جميع الحقوق محفوظة.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

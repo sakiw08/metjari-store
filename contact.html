@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>اتصل بنا - متجري</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo"><h2><i class="fas fa-store"></i> ميم نون</h2></div>
+            <nav class="nav">
+                <a href="index.html">الرئيسية</a>
+                <a href="products.html">المنتجات</a>
+                <a href="cart.html">سلة التسوق</a>
+                <a href="about.html">عن المتجر</a>
+                <a href="contact.html" class="active">اتصل بنا</a>
+            </nav>
+            <div class="user-menu" onclick="toggleUserMenu()">
+                <i class="fas fa-user"></i>
+                <span id="userName">الدخول</span>
+            </div>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <section class="contact-hero">
+        <div class="container">
+            <h1>اتصل بنا</h1>
+            <p>نحن هنا لمساعدتك في أي وقت</p>
+        </div>
+    </section>
+
+    <section class="contact-content">
+        <div class="container">
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h2>تواصل معنا</h2>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <h3>رقم الهاتف</h3>
+                        <p>+218 91-234-5678</p>
+                        <a href="tel:+218912345678" class="contact-link">اتصل الآن</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <h3>البريد الإلكتروني</h3>
+                        <p>info@metjari.ly</p>
+                        <a href="mailto:info@metjari.ly" class="contact-link">أرسل رسالة</a>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-clock"></i>
+                        <h3>ساعات العمل</h3>
+                        <p>الأحد - الخميس: 9:00 ص - 10:00 م</p>
+                    </div>
+                </div>
+                <form class="contact-form">
+                    <h3>أرسل رسالتك</h3>
+                    <div class="input-group">
+                        <input type="text" placeholder="الاسم" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" placeholder="رقم الهاتف" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="email" placeholder="البريد الإلكتروني" required>
+                    </div>
+                    <div class="input-group">
+                        <textarea placeholder="رسالتك" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="contact-submit">إرسال الرسالة</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- WhatsApp + Modal + Footer -->
+    <a href="https://wa.me/218931931419" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <div id="productModal" class="product-modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div id="productModalBody"></div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 متجري. جميع الحقوق محفوظة.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        document.querySelector('.contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            showToast('✅ تم إرسال رسالتك بنجاح! سنرد عليك قريباً');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
