@@ -14,14 +14,14 @@ const products = [
     {id: 2, name: "سامسونج S24 ألترا", price: 1100, category: "phones", img: "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=400"},
     {id: 3, name: "مايك بوك برو M3", price: 4500, category: "laptops", img: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=400"},
     {id: 4, name: "سماعات إيربودز برو", price: 320, category: "accessories", img: "https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?auto=compress&cs=tinysrgb&w=400"},
-    {id: 5, name: "ساعة أبل واتش", price: 650, category: "accessories", img: "https://images.pexels.com/photos/1181463/pexels-photo-1181463.jpeg?auto=compress&cs=tinysrgb&w=400"},
-    {id: 6, name: "لاب توب أسوس", price: 2200, category: "laptops", img: "https://images.pexels.com/photos/177028/pexels-photo-177028.jpeg?auto=compress&cs=tinysrgb&w=400"},
+      {id: 5, name: "ساعة أبل واتش", price: 650, category: "accessories", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"},
+      {id: 6, name: "لاب توب أسوس", price: 2200, category: "laptops", img: "https://images.unsplash.com/photo-1588702547923-7093a6c3b8e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"},
     {id: 7, name: "سماعة سوني واي فاي", price: 280, category: "accessories", img: "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=400"},
     {id: 8, name: "شاحن لاسلكي 20W", price: 75, category: "accessories", img: "https://images.pexels.com/photos/394372/pexels-photo-394372.jpeg?auto=compress&cs=tinysrgb&w=400"},
     {id: 9, name: "سامسونج Z Fold6", price: 1850, category: "phones", img: "https://images.pexels.com/photos/3822864/pexels-photo-3822864.jpeg?auto=compress&cs=tinysrgb&w=400"},
     {id: 10, name: "ديل XPS 13", price: 3200, category: "laptops", img: "https://images.pexels.com/photos/1181243/pexels-photo-1181243.jpeg?auto=compress&cs=tinysrgb&w=400"},
-    {id: 11, name: "سماعة بوز 2 Pro", price: 450, category: "accessories", img: "https://images.pexels.com/photos/1649777/pexels-photo-1649777.jpeg?auto=compress&cs=tinysrgb&w=400"},
-    {id: 12, name: "هواوي Watch GT5", price: 550, category: "accessories", img: "https://images.pexels.com/photos/3559179/pexels-photo-3559179.jpeg?auto=compress&cs=tinysrgb&w=400"}
+    {id: 11, name: "سماعة بوز 2 Pro", price: 450, category: "accessories", img: "https://images.unsplash.com/photo-1613427749842-0b3123449841?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"},
+    {id: 12, name: "هواوي Watch GT5", price: 550, category: "accessories", img: "https://images.unsplash.com/photo-1542459595-7e7e912adee9?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80"}
 ];
 
 // السلة والتقييمات
