@@ -1253,3 +1253,11 @@ body {
         font-size: 1.6rem !important;
     }
         }
+/* ضع في آخر style.css */
+@media (max-width: 768px) {
+    .add-to-cart {
+        height: 70px !important;
+        padding: 20px !important;
+        font-size: 20px !important;
+    }
+}
