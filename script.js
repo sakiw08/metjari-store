@@ -313,7 +313,10 @@ document.addEventListener('DOMContentLoaded', function() {
             document.getElementById('productModal').style.display = 'none';
         }
     });
-    
+
+    if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js');
+    }
     // نجوم التقييم
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('star')) {
