@@ -3,85 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>متجري - أفضل الأسعار في ليبيا</title>
+    <title>ميم نون - أفضل الأسعار في ليبيا</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
     <header class="header">
         <div class="container">
             <div class="logo">
                 <h2><i class="fas fa-store"></i> ميم نون</h2>
             </div>
             <nav class="nav">
-    <a href="index.html">الرئيسية</a>
-    <a href="products.html">المنتجات</a>
-    <a href="cart.html">سلة التسوق</a>
-    <a href="about.html">عن المتجر</a>
-    <a href="contact.html">اتصل بنا</a>
-</nav>
+                <a href="index.html" class="active">الرئيسية</a>
+                <a href="products.html">المنتجات</a>
+                <a href="cart.html">سلة التسوق</a>
+                <a href="about.html">عن المتجر</a>
+                <a href="contact.html">اتصل بنا</a>
+            </nav>
             <div class="user-menu" onclick="toggleUserMenu()">
-    <i class="fas fa-user"></i>
-    <span id="userName">الدخول</span>
-</div>
+                <i class="fas fa-user"></i>
+                <span id="userName">الدخول</span>
+            </div>
             <div class="menu-toggle"><i class="fas fa-bars"></i></div>
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section id="home" class="hero">
         <div class="hero-content">
             <h1>أفضل الأسعار في ليبيا</h1>
             <p>تسوق منتجات عالية الجودة بأسعار تنافسية</p>
-            <button class="cta-btn">تسوق الآن</button>
+            <a href="products.html" class="cta-btn">تسوق الآن</a>
         </div>
     </section>
 
-    <!-- Products Section -->
     <section id="products" class="products">
         <div class="container">
-            <h2 class="section-title">منتجاتنا</h2>
+            <h2 class="section-title">منتجاتنا المميزة</h2>
             <div class="products-grid">
                 <div class="product-card">
-                    <img src="https://via.placeholder.com/300x300?text=آيفون+15" alt="آيفون 15">
-                    <h3>آيفون 15</h3>
+                    <img src="https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?w=400" alt="آيفون 15">
+                    <h3>آيفون 15 برو</h3>
                     <div class="price">1,250 د.ل</div>
-                    <button class="add-to-cart">أضف للسلة</button>
+                    <a href="products.html" class="add-to-cart">تسوق الآن</a>
                 </div>
                 <div class="product-card">
-                    <img src="https://via.placeholder.com/300x300?text=سامسونج+S24" alt="سامسونج S24">
-                    <h3>سامسونج S24</h3>
+                    <img src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?w=400" alt="سامسونج S24">
+                    <h3>سامسونج S24 ألترا</h3>
                     <div class="price">1,100 د.ل</div>
-                    <button class="add-to-cart">أضف للسلة</button>
+                    <a href="products.html" class="add-to-cart">تسوق الآن</a>
                 </div>
                 <div class="product-card">
-                    <img src="https://via.placeholder.com/300x300?text=مايك+برو" alt="مايك برو">
-                    <h3>مايك برو</h3>
-                    <div class="price">450 د.ل</div>
-                    <button class="add-to-cart">أضف للسلة</button>
+                    <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?w=400" alt="ماك بوك">
+                    <h3>ماك بوك برو M3</h3>
+                    <div class="price">4,500 د.ل</div>
+                    <a href="products.html" class="add-to-cart">تسوق الآن</a>
                 </div>
                 <div class="product-card">
-                    <img src="https://via.placeholder.com/300x300?text=سماعات+بلاي" alt="سماعات بلاي">
-                    <h3>سماعات بلاي</h3>
+                    <img src="https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?w=400" alt="إيربودز">
+                    <h3>إيربودز برو</h3>
                     <div class="price">320 د.ل</div>
-                    <button class="add-to-cart">أضف للسلة</button>
+                    <a href="products.html" class="add-to-cart">تسوق الآن</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- WhatsApp Button -->
     <a href="https://wa.me/218931931419" class="whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 
-    <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 متجري. جميع الحقوق محفوظة.</p>
+            <p>&copy; 2026 ميم نون. جميع الحقوق محفوظة.</p>
             <div class="social-links">
                 <a href="#"><i class="fab fa-facebook"></i></a>
                 <a href="#"><i class="fab fa-instagram"></i></a>
