@@ -1,21 +1,14 @@
-const CACHE_NAME = 'metjari-v1';
+const CACHE_NAME = 'metjari-v2';
 const urlsToCache = [
     '/',
     '/index.html',
+    '/products.html',
+    '/cart.html', 
+    '/login.html',
+    '/about.html',
+    '/contact.html',
     '/style.css',
-    '/script.js'
+    '/script.js',
+    '/manifest.json',
+    '/sw.js'
 ];
-
-self.addEventListener('install', event => {
-    event.waitUntil(
-        caches.open(CACHE_NAME)
-            .then(cache => cache.addAll(urlsToCache))
-    );
-});
-
-self.addEventListener('fetch', event => {
-    event.respondWith(
-        caches.match(event.request)
-            .then(response => response || fetch(event.request))
-    );
-});
