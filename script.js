@@ -12,7 +12,7 @@ function getCurrentUser() {
 // بيانات المنتجات
 const products = [
     {id: 1, name: "آيفون 15 برو ماكس", price: 1250, category: "phones", img: "https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?fm=jpg&w=400&fit=crop"},
-    {id: 2, name: "سامسونج S24 ألترا", price: 1100, category: "phones", img: "https://images.unsplash.com/photo-1707849639252-891bf471ee4f?w=400"},
+    {id: 2, name: "سامسونج S24 ألترا", price: 1100, category: "phones", img: "images/product1.jpg"},
     {id: 3, name: "مايك بوك برو M3", price: 4500, category: "laptops", img: "https://images.unsplash.com/photo-1613673701975-71f972a5bd95?w=400"},
     {id: 4, name: "سماعات إيربودز برو", price: 320, category: "accessories", img: "https://images.unsplash.com/photo-1588423771079-318a717d9ced?w=400"},
     {id: 5, name: "ساعة أبل واتش", price: 650, category: "accessories", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400"},
