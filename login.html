@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>تسجيل الدخول - متجري</title>
+    <title>تسجيل الدخول - ميم نون</title>
     <link rel="manifest" href="manifest.json">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -12,15 +12,15 @@
 <body>
     <header class="header">
         <div class="container">
-            <div class="logo"><h2><i class="fas fa-store"></i> متجري</h2></div>
+            <div class="logo"><h2><i class="fas fa-store"></i> ميم نون</h2></div>
             <nav class="nav">
-    <a href="index.html">الرئيسية</a>
-    <a href="products.html">المنتجات</a>
-    <a href="cart.html">سلة التسوق</a>
-    <a href="about.html">عن المتجر</a>
-    <a href="contact.html">اتصل بنا</a>
-</nav>
-            <div class="user-menu">
+                <a href="index.html">الرئيسية</a>
+                <a href="products.html">المنتجات</a>
+                <a href="cart.html">سلة التسوق</a>
+                <a href="about.html">عن المتجر</a>
+                <a href="contact.html">اتصل بنا</a>
+            </nav>
+            <div class="user-menu" onclick="toggleUserMenu()">
                 <i class="fas fa-user"></i>
                 <span id="userName">الدخول</span>
             </div>
@@ -36,7 +36,6 @@
                     <button class="tab-btn" onclick="showTab('register')">إنشاء حساب</button>
                 </div>
                 
-                <!-- تسجيل الدخول -->
                 <div id="loginTab" class="auth-tab active">
                     <h2>مرحباً بعودتك</h2>
                     <p>قم بتسجيل الدخول لإدارة طلباتك</p>
@@ -53,7 +52,6 @@
                     </form>
                 </div>
 
-                <!-- إنشاء حساب -->
                 <div id="registerTab" class="auth-tab">
                     <h2>إنشاء حساب جديد</h2>
                     <p>سجل معنا للحصول على تجربة تسوق أفضل</p>
@@ -83,18 +81,21 @@
 
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2026 متجري. جميع الحقوق محفوظة.</p>
+            <p>&copy; 2026 ميم نون. جميع الحقوق محفوظة.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </div>
         </div>
     </footer>
 
     <script src="script.js"></script>
     <script>
-        // تسجيل الدخول والتسجيل
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const email = document.getElementById('loginEmail').value;
             const password = document.getElementById('loginPassword').value;
-            
             const user = {email, password, loginTime: new Date()};
             localStorage.setItem('currentUser', JSON.stringify(user));
             showToast('✅ تم تسجيل الدخول بنجاح');
@@ -110,7 +111,6 @@
                 password: document.getElementById('regPassword').value,
                 registerTime: new Date()
             };
-            
             localStorage.setItem('users', JSON.stringify([...getUsers(), user]));
             showToast('✅ تم إنشاء الحساب بنجاح');
             showTab('login');
@@ -123,7 +123,6 @@
         function showTab(tabName) {
             document.querySelectorAll('.auth-tab').forEach(tab => tab.classList.remove('active'));
             document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            
             document.getElementById(tabName + 'Tab').classList.add('active');
             event.target.classList.add('active');
         }
