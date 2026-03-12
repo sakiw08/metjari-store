@@ -1,4 +1,4 @@
-const CACHE_NAME = 'mimnoon-store-v1';
+const CACHE_NAME = 'mimnoon-store-v2';
 
 const ASSETS_TO_CACHE = [
   './',
@@ -11,11 +11,11 @@ const ASSETS_TO_CACHE = [
   './style.css',
   './script.js',
   './manifest.json',
-  './icon-192.png',
-  './icon-512.png'
+  './icon-192.jpeg',
+  './icon-512.jpeg'
 ];
 
-// تثبيت الـ Service Worker وتخزين الملفات الأساسية
+// تثبيت Service Worker وتخزين الملفات الأساسية
 self.addEventListener('install', event => {
   event.waitUntil(
     caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS_TO_CACHE))
