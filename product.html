@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تفاصيل المنتج - ميم نون</title>
+    
+    <!-- نفس الروابط والخطوط الموجودة في الصفحات الأخرى -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="manifest" href="manifest.json">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- الهيدر (منسوخ من أي صفحة أخرى) -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h2>ميم نون</h2>
+            </div>
+            <nav class="nav">
+                <a href="index.html">الرئيسية</a>
+                <a href="products.html">المنتجات</a>
+                <a href="cart.html">السلة</a>
+                <a href="about.html">عن المتجر</a>
+                <a href="contact.html">اتصل بنا</a>
+            </nav>
+            <div class="user-menu" onclick="toggleUserMenu()">
+                <i class="fas fa-user"></i>
+                <span id="userName">الدخول</span>
+            </div>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- قسم تفاصيل المنتج -->
+    <section class="product-details" style="padding: 120px 0 60px;">
+        <div class="container">
+            <div id="productDetailsContainer">
+                <!--这里 سيتم حقن محتوى المنتج بواسطة JavaScript -->
+                <div style="text-align: center; padding: 50px;">
+                    <i class="fas fa-spinner fa-spin" style="font-size: 3rem; color: #667eea;"></i>
+                    <p>جاري تحميل بيانات المنتج...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- زر واتساب عائم -->
+    <a href="https://wa.me/218931931419" class="whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <p>© 2026 ميم نون. جميع الحقوق محفوظة.</p>
+            <div class="social-links">
+                <a href="javascript:void(0)"><i class="fab fa-facebook"></i></a>
+                <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/218931931419"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // هذا الكود الخاص بالصفحة: يقرأ id المنتج من الرابط ويعرضه
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. الحصول على id المنتج من الرابط (مثال: product-details.html?id=3)
+            const urlParams = new URLSearchParams(window.location.search);
+            const productId = parseInt(urlParams.get('id'));
+            
+            // 2. البحث عن المنتج في مصفوفة products (من ملف script.js)
+            const product = products.find(p => p.id === productId);
+            
+            const container = document.getElementById('productDetailsContainer');
+            
+            if (!product) {
+                // إذا لم يوجد المنتج
+                container.innerHTML = `
+                    <div style="text-align: center; padding: 50px;">
+                        <i class="fas fa-exclamation-triangle" style="font-size: 4rem; color: #ff6b6b;"></i>
+                        <h2>المنتج غير موجود</h2>
+                        <p>عذراً، لم نتمكن من العثور على المنتج المطلوب.</p>
+                        <a href="products.html" class="cta-btn">عرض جميع المنتجات</a>
+                    </div>
+                `;
+                return;
+            }
+            
+            // 3. عرض تفاصيل المنتج
+            container.innerHTML = `
+                <div class="product-details-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                    <!-- صورة المنتج -->
+                    <div>
+                        <img src="${product.img}" alt="${product.name}" style="width: 100%; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
+                    </div>
+                    
+                    <!-- معلومات المنتج -->
+                    <div>
+                        <h1 style="font-size: 2.5rem; margin-bottom: 10px;">${product.name}</h1>
+                        <div class="price" style="font-size: 2.2rem; color: #ff6b6b; margin-bottom: 20px;">${product.price.toLocaleString()} د.ل</div>
+                        
+                        <div style="background: #f8f9fa; padding: 20px; border-radius: 15px; margin-bottom: 25px;">
+                            <h3 style="margin-bottom: 15px;">📋 وصف المنتج</h3>
+                            <p style="line-height: 1.8;">${product.description || 'منتج عالي الجودة من متجر ميم نون، يتميز بأداء ممتاز وتصميم عصري. نضمن لك الجودة والسعر المناسب مع خدمة شحن سريعة ودعم فوري عبر واتساب.'}</p>
+                        </div>
+                        
+                        <div style="margin-bottom: 25px;">
+                            <h3 style="margin-bottom: 15px;">✨ المميزات</h3>
+                            <ul style="list-style: none; padding: 0;">
+                                <li style="margin-bottom: 10px;">🔹 <strong>ضمان لمدة سنة</strong> كاملة ضد عيوب الصناعة</li>
+                                <li style="margin-bottom: 10px;">🔹 <strong>شحن سريع</strong> خلال 3 أيام عمل</li>
+                                <li style="margin-bottom: 10px;">🔹 <strong>إمكانية الاستبدال</strong> خلال 7 أيام</li>
+                                <li style="margin-bottom: 10px;">🔹 <strong>دعم فني</strong> عبر واتساب على مدار الساعة</li>
+                            </ul>
+                        </div>
+                        
+                        <div style="margin-bottom: 30px;">
+                            <span style="font-weight: bold; display: block; margin-bottom: 10px;">🎨 الألوان المتاحة:</span>
+                            <div style="display: flex; gap: 10px;">
+                                <span style="display: inline-block; width: 40px; height: 40px; background: #000; border-radius: 50%; cursor: pointer; border: 2px solid #ddd;"></span>
+                                <span style="display: inline-block; width: 40px; height: 40px; background: #c0c0c0; border-radius: 50%; cursor: pointer; border: 2px solid #ddd;"></span>
+                                <span style="display: inline-block; width: 40px; height: 40px; background: #ffd700; border-radius: 50%; cursor: pointer; border: 2px solid #ddd;"></span>
+                                <span style="display: inline-block; width: 40px; height: 40px; background: #ff69b4; border-radius: 50%; cursor: pointer; border: 2px solid #ddd;"></span>
+                            </div>
+                        </div>
+                        
+                        <button class="add-to-cart" onclick="addToCart(${product.id})" style="width: 100%; padding: 15px; font-size: 1.2rem; background: linear-gradient(45deg, #667eea, #764ba2); color: white; border: none; border-radius: 12px; cursor: pointer; font-weight: bold;">
+                            🛒 أضف إلى السلة
+                        </button>
+                    </div>
+                </div>
+            `;
+        });
+    </script>
+</body>
+</html>

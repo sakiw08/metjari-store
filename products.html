@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>المنتجات - متجر ميم نون</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.jpeg" type="image/jpeg">
+
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+  <!-- الهيدر -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <h2>ميم نون</h2>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">الرئيسية</a>
+        <a href="products.html" class="active">المنتجات</a>
+        <a href="cart.html">السلة</a>
+        <a href="about.html">عن المتجر</a>
+        <a href="contact.html">اتصل بنا</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="user-menu" onclick="toggleUserMenu()">
+          <i class="fas fa-user"></i>
+          <span id="userName">الدخول</span>
+        </div>
+
+        <div class="cart-icon" onclick="window.location.href='cart.html'">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
+        </div>
+
+        <div class="menu-toggle">
+          <i class="fas fa-bars"></i>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div style="height:80px"></div>
+
+  <!-- الفلاتر -->
+  <section class="filters">
+    <div class="container">
+      <div class="filter-header">
+        <h3>تصفية المنتجات</h3>
+        <button type="button" class="btn-reset-filters" onclick="location.reload()">
+          مسح التصفية
+        </button>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-item">
+          <label for="categoryFilter">الفئة</label>
+          <select id="categoryFilter">
+            <option value="all">جميع الفئات</option>
+            <option value="phones">الهواتف</option>
+            <option value="laptops">اللاب توب</option>
+            <option value="accessories">الإكسسوارات</option>
+          </select>
+        </div>
+
+        <div class="filter-item">
+          <label for="priceFilter">السعر</label>
+          <select id="priceFilter">
+            <option value="all">جميع الأسعار</option>
+            <option value="0-500">أقل من 500 د.ل</option>
+            <option value="500-1500">من 500 إلى 1500 د.ل</option>
+            <option value="1500+">أكثر من 1500 د.ل</option>
+          </select>
+        </div>
+
+        <div class="filter-item">
+          <label for="searchInput">بحث</label>
+          <input id="searchInput" type="text" placeholder="ابحث باسم المنتج">
+        </div>
+      </div>
+
+      <p id="activeFiltersText" data-has-filters="false" class="filters-info">
+        جميع المنتجات معروضة حالياً
+      </p>
+    </div>
+  </section>
+
+  <!-- قائمة المنتجات -->
+  <section class="products">
+    <div class="container">
+      <h2 class="section-title">
+        جميع المنتجات <span id="productsCount">0</span>
+      </h2>
+
+      <div id="productsGrid" class="products-grid">
+        <!-- المنتجات تُحقن من script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- مودال المنتج -->
+  <div id="productModal" class="product-modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div id="productModalBody"></div>
+    </div>
+  </div>
+
+  <!-- زر واتساب -->
+  <a href="https://wa.me/218931931419" class="whatsapp-btn" target="_blank" rel="noopener">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  
+  <a href="https://m.me/61588288396189" class="facebook-btn" target="_blank" rel="noopener">
+    <i class="fab fa-facebook-messenger"></i>
+</a>
+
+  <!-- الفوتر -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 ميم نون. جميع الحقوق محفوظة.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-x-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
