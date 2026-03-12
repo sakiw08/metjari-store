@@ -1,3 +1,4 @@
+/* ========== RESET & BASE ========== */
 * {
     margin: 0;
     padding: 0;
@@ -17,7 +18,12 @@ body {
     padding: 0 20px;
 }
 
-/* Header */
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ========== HEADER ========== */
 .header {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
     color: white;
@@ -49,13 +55,36 @@ body {
     color: white;
     text-decoration: none;
     font-weight: 500;
-    transition: opacity 0.3s;
+    transition: opacity 0.3s, border-color 0.3s, color 0.3s;
+    padding-bottom: 2px;
 }
 
 .nav a:hover {
     opacity: 0.8;
 }
 
+.nav a.active {
+    color: #ffd700;
+    border-bottom: 2px solid #ffd700;
+}
+
+.user-menu {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    font-weight: 500;
+    color: #fff;
+}
+
+.menu-toggle {
+    display: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #fff;
+}
+
+/* ========== CART ICON (اختياري في الهيدر) ========== */
 .cart-icon {
     position: relative;
     font-size: 1.5rem;
@@ -78,23 +107,21 @@ body {
     font-weight: bold;
 }
 
-.menu-toggle {
-    display: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-}
-
-/* Hero Section */
+/* ========== HERO (الرئيسية) ========== */
 .hero {
-    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
                 url('https://images.unsplash.com/photo-1556742049-0cfed4f6a45d') center/cover;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     align-items: center;
-    justify-content: center;
     text-align: center;
     color: white;
-    margin-top: 80px;
+    margin-top: 80px; /* لتعويض الهيدر الثابت */
+}
+
+.hero-content {
+    max-width: 700px;
+    margin: 0 auto;
 }
 
 .hero-content h1 {
@@ -117,6 +144,8 @@ body {
     font-size: 1.2rem;
     font-weight: 600;
     cursor: pointer;
+    display: inline-block;
+    text-decoration: none;
     transition: transform 0.3s, box-shadow 0.3s;
 }
 
@@ -125,7 +154,7 @@ body {
     box-shadow: 0 10px 25px rgba(0,0,0,0.2);
 }
 
-/* Products */
+/* ========== PRODUCTS GRID ========== */
 .products {
     padding: 100px 0;
     background: #f8f9fa;
@@ -133,15 +162,16 @@ body {
 
 .section-title {
     text-align: center;
-    font-size: 2.5rem;
-    margin-bottom: 4rem;
+    font-size: 2.2rem;
+    margin-bottom: 3rem;
     color: #333;
 }
 
 .products-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
+    gap: 2.5rem;
+    padding: 0 10px;
 }
 
 .product-card {
@@ -149,22 +179,28 @@ body {
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .product-card:hover {
-    transform: translateY(-10px);
+    transform: translateY(-10px) scale(1.02);
     box-shadow: 0 20px 40px rgba(0,0,0,0.15);
 }
 
 .product-card img {
     width: 100%;
-    height: 250px;
+    height: 280px;
     object-fit: cover;
+    border-radius: 20px 20px 0 0;
+    transition: transform 0.4s ease;
+}
+
+.product-card:hover img {
+    transform: scale(1.05);
 }
 
 .product-card h3 {
-    padding: 1.5rem 1.5rem 1rem;
+    padding: 1.5rem 1.5rem 0.75rem;
     font-size: 1.3rem;
     color: #333;
 }
@@ -179,24 +215,25 @@ body {
 .product-actions {
     display: flex;
     gap: 1rem;
-    padding: 1rem 1.5rem;
+    padding: 0 1.5rem 1.5rem;
 }
 
 .add-to-cart {
     flex: 1;
-    padding: 1rem;
+    padding: 1.1rem 1.5rem;
     background: linear-gradient(45deg, #667eea, #764ba2);
     color: white;
     border: none;
     font-size: 1rem;
     font-weight: 600;
     cursor: pointer;
-    transition: background 0.3s;
-    border-radius: 10px;
+    border-radius: 12px;
+    transition: background 0.3s, transform 0.2s;
 }
 
 .add-to-cart:hover {
     background: linear-gradient(45deg, #5a67d8, #6b46c1);
+    transform: translateY(-2px);
 }
 
 .quick-view {
@@ -204,66 +241,46 @@ body {
     color: white;
     border: none;
     padding: 1rem;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
     font-size: 1rem;
+    transition: background 0.3s;
 }
 
 .quick-view:hover {
     background: #5a67d8;
 }
 
-/* WhatsApp Button */
-.whatsapp-btn {
-    position: fixed;
-    bottom: 30px;
-    left: 30px;
-    width: 60px;
-    height: 60px;
-    background: #25D366;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.8rem;
-    color: white;
-    text-decoration: none;
-    box-shadow: 0 4px 15px rgba(37,211,102,0.4);
-    z-index: 1000;
-    transition: transform 0.3s;
-}
-
-.whatsapp-btn:hover {
-    transform: scale(1.1);
-}
-
-/* Footer */
-.footer {
-    background: #2c3e50;
-    color: white;
-    text-align: center;
-    padding: 3rem 0;
-}
-
-.social-links {
-    margin-top: 1rem;
-}
-
-.social-links a {
-    color: white;
-    font-size: 1.5rem;
-    margin: 0 1rem;
-    transition: color 0.3s;
-}
-
-.social-links a:hover {
-    color: #3498db;
-}
-
-/* Filters */
+/* ========== FILTERS ========== */
 .filters {
-    padding: 100px 0 50px;
-    background: white;
+    padding: 100px 0 40px;
+    background: #fff;
+}
+
+.filter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.filter-header h3 {
+    font-size: 1.3rem;
+    color: #333;
+}
+
+.btn-reset-filters {
+    border: none;
+    background: #eee;
+    padding: 0.6rem 1.2rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: 'Cairo', sans-serif;
+    font-size: 0.9rem;
+}
+
+.btn-reset-filters:hover {
+    background: #e2e2e2;
 }
 
 .filter-group {
@@ -274,29 +291,48 @@ body {
     flex-wrap: wrap;
 }
 
-.filter-group select,
-.filter-group input {
+.filter-item {
     flex: 1;
     min-width: 200px;
-    padding: 1rem;
-    border: 2px solid #eee;
-    border-radius: 10px;
+}
+
+.filter-item label {
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+.filter-group select,
+.filter-group input {
+    width: 100%;
+    padding: 1.1rem 1.2rem;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
     font-family: 'Cairo', sans-serif;
     font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
 }
 
-.filter-group input {
-    min-width: 300px;
+.filter-group select:focus,
+.filter-group input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 4px rgba(102,126,234,0.15);
 }
 
-/* Product Modal - دمج كامل */
+.filters-info {
+    text-align: center;
+    margin-top: 0.75rem;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+/* ========== PRODUCT MODAL ========== */
 .product-modal {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    inset: 0;
     background: rgba(0,0,0,0.8);
     z-index: 2000;
     backdrop-filter: blur(5px);
@@ -312,7 +348,7 @@ body {
     max-width: 90%;
     max-height: 90%;
     overflow-y: auto;
-    animation: slideIn 0.3s ease;
+    animation: modalSlideIn 0.3s ease;
     box-shadow: 0 20px 60px rgba(0,0,0,0.3);
 }
 
@@ -323,7 +359,7 @@ body {
     font-size: 2rem;
     cursor: pointer;
     color: #666;
-    z-index: 2001;
+    z-index: 10;
 }
 
 .close-modal:hover {
@@ -334,7 +370,6 @@ body {
     display: flex;
     gap: 2rem;
     padding: 2rem;
-    direction: rtl;
 }
 
 .modal-product img {
@@ -362,18 +397,59 @@ body {
     margin-bottom: 1rem;
 }
 
-@keyframes slideIn {
-    from { 
-        transform: translate(-50%, -60%); 
-        opacity: 0; 
-    }
-    to { 
-        transform: translate(-50%, -50%); 
-        opacity: 1; 
-    }
+@keyframes modalSlideIn {
+    from { transform: translate(-50%, -60%); opacity: 0; }
+    to   { transform: translate(-50%, -50%); opacity: 1; }
 }
 
-/* Cart Page Styles */
+/* ========== WHATSAPP FLOAT BUTTON ========== */
+.whatsapp-btn {
+    position: fixed;
+    bottom: 30px;
+    left: 30px;
+    width: 70px;
+    height: 70px;
+    background: #25D366;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    box-shadow: 0 4px 15px rgba(37,211,102,0.4);
+    z-index: 1000;
+    transition: transform 0.3s;
+}
+
+.whatsapp-btn:hover {
+    transform: scale(1.12);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+    background: #2c3e50;
+    color: white;
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.social-links {
+    margin-top: 1rem;
+}
+
+.social-links a {
+    color: white;
+    font-size: 1.5rem;
+    margin: 0 1rem;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: #3498db;
+}
+
+/* ========== CART PAGE ========== */
 .cart-section {
     padding: 120px 0 100px;
     min-height: 70vh;
@@ -383,12 +459,6 @@ body {
 .cart-empty {
     text-align: center;
     padding: 4rem 2rem;
-}
-
-.cart-empty i {
-    font-size: 5rem;
-    color: #ddd;
-    margin-bottom: 1rem;
 }
 
 .cart-empty h3 {
@@ -415,7 +485,8 @@ body {
     margin-bottom: 2rem;
 }
 
-.cart-header, .cart-row {
+.cart-header,
+.cart-row {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr 0.5fr;
     gap: 1rem;
@@ -555,9 +626,8 @@ body {
     border-radius: 50px;
     cursor: pointer;
     font-weight: 600;
-    transition: background 0.3s;
-    flex: 1;
     max-width: 200px;
+    width: 100%;
 }
 
 .clear-cart:hover {
@@ -569,12 +639,12 @@ body {
     align-items: center;
     gap: 0.5rem;
     text-decoration: none;
-    flex: 1;
     max-width: 250px;
+    width: 100%;
     justify-content: center;
 }
 
-/* Toast */
+/* ========== TOAST ========== */
 .toast {
     position: fixed;
     top: 20px;
@@ -587,10 +657,10 @@ body {
     z-index: 9999;
     font-family: 'Cairo', sans-serif;
     box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    animation: slideDown 0.3s ease;
+    animation: toastSlideDown 0.3s ease;
 }
 
-@keyframes slideDown {
+@keyframes toastSlideDown {
     from {
         transform: translateX(-50%) translateY(-100%);
         opacity: 0;
@@ -601,81 +671,7 @@ body {
     }
 }
 
-/* Responsive */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-    
-    .nav {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0;
-        background: rgba(255,255,255,0.95);
-        flex-direction: column;
-        width: 100%;
-        padding: 1rem;
-        backdrop-filter: blur(10px);
-    }
-    
-    .nav.active {
-        display: flex;
-    }
-    
-    .hero-content h1 {
-        font-size: 2.5rem;
-    }
-    
-    .products-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-        gap: 1.5rem;
-    }
-    
-    .filter-group {
-        flex-direction: column;
-    }
-    
-    .filter-group select,
-    .filter-group input {
-        min-width: 100%;
-    }
-    
-    .cart-header, .cart-row {
-        grid-template-columns: 1fr 1fr;
-        gap: 0.5rem;
-        font-size: 0.9rem;
-    }
-    
-    .cart-product img {
-        width: 50px;
-        height: 50px;
-        margin-left: 0.5rem;
-    }
-    
-    .checkout-actions {
-        flex-direction: column;
-    }
-    
-    .modal-product {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .modal-product img {
-        width: 100%;
-        max-width: 300px;
-        height: 250px;
-    }
-}
-
-@media (max-width: 480px) {
-    .cart-header, .cart-row {
-        grid-template-columns: 1fr;
-        gap: 1rem;
-    }
-}
-/* Auth Pages */
+/* ========== AUTH (LOGIN / REGISTER) ========== */
 .auth-section {
     padding: 120px 0;
     min-height: 100vh;
@@ -747,7 +743,6 @@ body {
     top: 50%;
     transform: translateY(-50%);
     color: #667eea;
-    z-index: 1;
 }
 
 .input-group input {
@@ -782,14 +777,7 @@ body {
     transform: translateY(-2px);
 }
 
-.user-menu {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-    font-weight: 500;
-}
-/* Reviews System */
+/* ========== REVIEWS ========== */
 .product-reviews {
     padding: 1rem 1.5rem 1.5rem;
     border-top: 1px solid #eee;
@@ -870,92 +858,25 @@ body {
     cursor: pointer;
 }
 
-.submit-review:hover {
-    background: linear-gradient(45deg, #5a67d8, #6b46c1);
-}
-
-.avg-rating {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1rem;
-    padding: 1rem;
-    background: #f8f9fa;
-    border-radius: 10px;
-}
-
-.avg-stars {
-    font-size: 1.5rem;
-    color: #ffd700;
-}
-
-.avg-score {
-    font-weight: 700;
-    color: #333;
-}
-
-.review-count {
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.reviews-list {
-    max-height: 200px;
-    overflow-y: auto;
-}
-
-.review-item {
-    padding: 1rem 0;
-    border-bottom: 1px solid #eee;
-}
-
-.review-header {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 0.5rem;
-}
-
-.review-stars {
-    color: #ffd700;
-    font-size: 1.1rem;
-}
-
-.review-author {
-    font-weight: 600;
-    color: #667eea;
-}
-
-.review-date {
-    color: #999;
-    font-size: 0.9rem;
-}
-
-.review-comment {
-    color: #555;
-    line-height: 1.5;
-}
-
-.no-reviews {
-    text-align: center;
-    color: #999;
-    font-style: italic;
-}
-
-/* About & Contact Pages */
-.about-hero, .contact-hero {
-    background: linear-gradient(rgba(102,126,234,0.9), rgba(118,75,162,0.9)), url('https://images.unsplash.com/photo-1460925895917-afdab827c52f') center/cover;
+/* ========== ABOUT & CONTACT ========== */
+.about-hero,
+.contact-hero {
+    background: linear-gradient(rgba(102,126,234,0.9), rgba(118,75,162,0.9)),
+                url('https://images.unsplash.com/photo-1460925895917-afdab827c52f') center/cover;
     padding: 150px 0;
     text-align: center;
     color: white;
+    margin-top: 80px; /* لتعويض الهيدر */
 }
 
-.about-hero h1, .contact-hero h1 {
+.about-hero h1,
+.contact-hero h1 {
     font-size: 3rem;
     margin-bottom: 1rem;
 }
 
-.about-hero h1 span, .contact-hero h1 span {
+.about-hero h1 span,
+.contact-hero h1 span {
     color: #ffd700;
 }
 
@@ -1125,74 +1046,7 @@ body {
     cursor: pointer;
 }
 
-.contact-submit:hover {
-    transform: translateY(-2px);
-}
-
-.nav a.active {
-    color: #ffd700;
-    border-bottom: 2px solid #ffd700;
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-    .story-content,
-    .contact-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-    
-    .about-hero h1, .contact-hero h1 {
-        font-size: 2rem;
-    }
-    }
-
-/* ==================== تحسينات ميم نون الاحترافية ==================== */
-
-/* 1️⃣ الصور واضحة + ارتفاع مثالي */
-.product-card img {
-    height: 280px !important;
-    object-fit: cover !important;
-    border-radius: 20px 20px 0 0 !important;
-    transition: transform 0.4s ease !important;
-}
-
-/* 2️⃣ مسافات واسعة بين المنتجات */
-.products-grid {
-    gap: 2.5rem !important;
-    padding: 20px !important;
-}
-
-/* 3️⃣ أزرار كبيرة سهلة الضغط */
-.add-to-cart {
-    padding: 1.3rem 2.5rem !important;
-    min-height: 55px !important;
-    font-size: 1.15rem !important;
-    border-radius: 15px !important;
-    margin-bottom: 1.5rem !important;
-}
-
-/* 4️⃣ Hover ساحر على المنتجات */
-.product-card {
-    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1) !important;
-}
-
-.product-card:hover {
-    transform: translateY(-15px) scale(1.02) !important;
-    box-shadow: 0 25px 50px rgba(0,123,255,0.15) !important;
-}
-
-.product-card:hover img {
-    transform: scale(1.05) !important;
-}
-
-/* 5️⃣ عناوين مناسبة الحجم */
-.section-title {
-    font-size: 1.8rem !important;
-    margin-bottom: 3rem !important;
-}
-
-/* 6️⃣ Loading Spinner للفلترة */
+/* ========== LOADING SPINNER (اختياري للفلاتر) ========== */
 .loading-spinner {
     border: 5px solid #f3f3f3;
     border-top: 5px solid #667eea;
@@ -1209,55 +1063,116 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-/* 7️⃣ فلاتر أجمل */
-.filter-group select,
-.filter-group input {
-    padding: 1.3rem 1.5rem !important;
-    border-radius: 15px !important;
-    border: 3px solid #e9ecef !important;
-    min-height: 55px !important;
+/* ========== RESPONSIVE ========== */
+
+@media (max-width: 992px) {
+    .hero-content h1 {
+        font-size: 2.7rem;
+    }
 }
 
-.filter-group select:focus,
-.filter-group input:focus {
-    border-color: #667eea !important;
-    box-shadow: 0 0 0 4px rgba(102,126,234,0.15) !important;
-}
-
-/* 8️⃣ واتساب أكبر وأجمل */
-.whatsapp-btn {
-    width: 70px !important;
-    height: 70px !important;
-    font-size: 2.2rem !important;
-    bottom: 30px !important;
-    left: 30px !important;
-}
-
-.whatsapp-btn:hover {
-    transform: scale(1.15) !important;
-}
-
-/* 9️⃣ موبايل مثالي */
 @media (max-width: 768px) {
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(255,255,255,0.96);
+        flex-direction: column;
+        width: 100%;
+        padding: 1rem;
+        backdrop-filter: blur(10px);
+    }
+
+    /* إذا أردت استخدام كلاس active من JS لاحقاً */
+    .nav.active {
+        display: flex;
+    }
+
+    .hero {
+        margin-top: 70px;
+    }
+
+    .hero-content h1 {
+        font-size: 2.2rem;
+    }
+
     .products-grid {
-        gap: 2rem !important;
-        padding: 15px !important;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 2rem;
     }
-    
+
     .add-to-cart {
-        padding: 1.5rem !important;
-        font-size: 1.1rem !important;
+        padding: 1.3rem;
+        font-size: 1.05rem;
     }
-    
-    .section-title {
-        font-size: 1.6rem !important;
+
+    .filter-group {
+        flex-direction: column;
     }
-        }
-/* ضع في آخر style.css */
-@media (max-width: 768px) {
-    .add-to-cart {
-        height: 70px !important;
-        padding: 20px !important;
-        font-size: 20px !important;
+
+    .story-content,
+    .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .about-hero h1,
+    .contact-hero h1 {
+        font-size: 2rem;
+    }
+
+    .modal-product {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .modal-product img {
+        width: 100%;
+        max-width: 300px;
+        height: 250px;
+        margin: 0 auto;
+    }
+
+    .cart-header,
+    .cart-row {
+        grid-template-columns: 1fr 1fr;
+        gap: 0.5rem;
+        font-size: 0.9rem;
+    }
+
+    .cart-product img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .checkout-actions {
+        flex-direction: column;
+    }
+
+    .auth-container {
+        margin: 0 10px;
+    }
+
+    .auth-tab {
+        padding: 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cart-header,
+    .cart-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .whatsapp-btn {
+        width: 60px;
+        height: 60px;
+        font-size: 1.7rem;
     }
 }
