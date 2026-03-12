@@ -3,16 +3,39 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>عن المتجر - ميم نون</title>
+    <meta name="description" content="تعرف على قصة متجر ميم نون، ورسالتنا في تقديم منتجات إلكترونية موثوقة بأسعار مناسبة داخل ليبيا.">
+
+    <!-- PWA -->
+    <meta name="theme-color" content="#667eea">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="عن متجر ميم نون">
+    <meta property="og:description" content="منصة تجارة إلكترونية ليبية تهدف لتسهيل التسوق أونلاين مع شحن سريع ودفع عند الاستلام.">
+    <meta property="og:image" content="https://sakiw08.github.io/metjari-store/icon-512.png">
+    <meta property="og:url" content="https://sakiw08.github.io/metjari-store/about.html">
+
+    <!-- تحميل أسرع -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+
+    <!-- الخطوط والأيقونات -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- النمط -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- الهيدر الموحد -->
     <header class="header">
         <div class="container">
-            <div class="logo"><h2><i class="fas fa-store"></i> ميم نون</h2></div>
+            <div class="logo">
+                <h2><i class="fas fa-store"></i> ميم نون</h2>
+            </div>
             <nav class="nav">
                 <a href="index.html">الرئيسية</a>
                 <a href="products.html">المنتجات</a>
@@ -28,66 +51,101 @@
         </div>
     </header>
 
+    <!-- هيرو عن المتجر -->
     <section class="about-hero">
         <div class="container">
             <h1>مرحباً بك في <span>ميم نون</span></h1>
-            <p>أكبر متجر إلكتروني في ليبيا بإذن الله</p>
+            <p>منصة تجارة إلكترونية ليبية تهدف لتسهيل التسوق أونلاين بثقة وراحة.</p>
         </div>
     </section>
 
+    <!-- إحصائيات بسيطة واقعية كبداية -->
     <section class="about-stats">
         <div class="container">
             <div class="stats-grid">
                 <div class="stat-item">
                     <i class="fas fa-users"></i>
-                    <h3>10,000+</h3>
-                    <p>زبائن سعيدين</p>
+                    <h3>+100</h3>
+                    <p>عميل جرّب الشراء عبر منصتنا</p>
                 </div>
                 <div class="stat-item">
                     <i class="fas fa-box"></i>
-                    <h3>50,000+</h3>
-                    <p>منتج مباع</p>
+                    <h3>+300</h3>
+                    <p>طلب تم تنفيذه بنجاح</p>
                 </div>
                 <div class="stat-item">
-                    <i class="fas fa-shipping-fast"></i>
-                    <h3>24 ساعة</h3>
-                    <p>توصيل سريع</p>
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>3 مدن</h3>
+                    <p>نخدم حالياً عدة مدن ليبية ونتوسع تدريجياً</p>
                 </div>
             </div>
         </div>
     </section>
 
+    <!-- القصة والميّزات -->
     <section class="about-story">
         <div class="container">
             <div class="story-content">
-                <img src="https://images.unsplash.com/photo-1556742049-ba779927cc62?w=600" alt="فريق العمل" class="story-img">
+                <img src="https://images.unsplash.com/photo-1556742049-ba779927cc62?auto=compress&cs=tinysrgb&w=600"
+                     alt="فريق العمل في متجر إلكتروني" class="story-img">
                 <div class="story-text">
                     <h2>قصتنا</h2>
-                    <p>ميم نون لكل طلبية توصل بالنون .</p>
+                    <p>
+                        وُلدت فكرة <strong>ميم نون</strong> من الحاجة إلى طريقة أسهل وأصدق لشراء الإلكترونيات داخل ليبيا،
+                        بدون تعب البحث في عشرات الصفحات والحسابات المختلفة. هدفنا أن نجمع أفضل العروض في مكان واحد،
+                        مع وضوح في السعر وطريقة الدفع والتوصيل.
+                    </p>
+                    <p>
+                        نعمل خطوة بخطوة على بناء منصة بسيطة، موثوقة، ومناسبة للاستخدام من الهاتف، ليتمكن أي شخص من
+                        طلب ما يحتاجه خلال دقائق، ويصل إلى بابه في أقرب وقت ممكن.
+                    </p>
+
+                    <h3>لماذا ميم نون؟</h3>
                     <div class="features">
-                        <div class="feature"><i class="fas fa-shield-alt"></i><span>ضمان الجودة</span></div>
-                        <div class="feature"><i class="fas fa-credit-card"></i><span>دفع آمن</span></div>
-                        <div class="feature"><i class="fas fa-headset"></i><span>دعم 24/7</span></div>
+                        <div class="feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <span>اختيار منتجات بعناية والتركيز على الجودة</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-credit-card"></i>
+                            <span>خيارات دفع مرنة تشمل الدفع عند الاستلام</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-shipping-fast"></i>
+                            <span>تنسيق شحن سريع داخل بنغازي ومناطق أخرى</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-headset"></i>
+                            <span>دعم عبر واتساب للمتابعة والاستفسارات</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <a href="https://wa.me/218931931419" class="whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
+    <!-- زر واتساب -->
+    <a href="https://wa.me/218931931419?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D9%85%D8%AA%D8%AC%D8%B1%20%D9%85%D9%8A%D9%85%20%D9%86%D9%88%D9%86"
+       class="whatsapp-btn" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- مودال المنتج للتوافق مع script.js -->
     <div id="productModal" class="product-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
             <div id="productModalBody"></div>
         </div>
     </div>
+
+    <!-- الفوتر الموحد -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2026 ميم نون. جميع الحقوق محفوظة.</p>
             <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="javascript:void(0)"><i class="fab fa-facebook"></i></a>
+                <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/218931931419"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
