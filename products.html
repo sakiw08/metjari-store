@@ -1,135 +1,137 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#667eea">
-    
-    <!-- SEO محسن -->
-    <title>ميم نون - جميع المنتجات | أفضل الأسعار في ليبيا</title>
-    <meta name="description" content="تسوق جميع المنتجات بأسعار مميزة. شحن سريع لكل مكان ✓ دفع عند الاستلام ✓ ضمان الجودة">
-    <meta name="keywords" content="ميم نون, متجر إلكتروني, ليبيا, تسوق أونلاين, هواتف, لاب توب, إكسسوارات">
-    
-    <!-- Open Graph للتواصل الاجتماعي -->
-    <meta property="og:title" content="ميم نون - جميع المنتجات">
-    <meta property="og:description" content="تسوق أفضل المنتجات بأسعار لا تُقاوم">
-    <meta property="og:image" content="https://sakiw08.github.io/metjari-store/icon-512.png">
-    <meta property="og:url" content="https://sakiw08.github.io/metjari-store/products.html">
-    
-    <!-- PWA -->
-    <link rel="manifest" href="manifest.json">
-    <link rel="apple-touch-icon" href="icon-192.png">
-    
-    <!-- Preload للسرعة -->
-    <link rel="preload" href="style.css" as="style">
-    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
-    
-    <!-- Fonts + Icons -->
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>جميع المنتجات - متجر ميم نون</title>
+
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.jpeg" type="image/jpeg">
+
+  <!-- أيقونات فونت أوسم لو كنت تستخدمها -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 <body>
-    <header class="header">
-        <div class="container">
-            <div class="logo">
-                <h2><i class="fas fa-store"></i> ميم نون</h2>
-            </div>
-            <nav class="nav">
-                <a href="index.html">الرئيسية</a>
-                <a href="products.html" class="active">المنتجات</a>
-                <a href="cart.html">سلة التسوق</a>
-                <a href="about.html">عن المتجر</a>
-                <a href="contact.html">اتصل بنا</a>
-            </nav>
-            <div class="user-menu" onclick="toggleUserMenu()">
-                <i class="fas fa-user"></i>
-                <span id="userName">الدخول</span>
-            </div>
-            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+
+  <!-- الهيدر -->
+  <header class="header">
+    <div class="container">
+      <div class="logo">
+        <h2>ميم نون</h2>
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">الرئيسية</a>
+        <a href="products.html" class="active">المنتجات</a>
+        <a href="cart.html">السلة</a>
+        <a href="about.html">عن المتجر</a>
+        <a href="contact.html">اتصل بنا</a>
+      </nav>
+
+      <div class="header-right">
+        <div class="user-menu" onclick="toggleUserMenu()">
+          <i class="fas fa-user"></i>
+          <span id="userName">الدخول</span>
         </div>
-    </header>
 
-    <!-- قسم الفلاتر بعد التعديل -->
-    <section class="filters">
-        <div class="container">
-            <div class="filter-header">
-                <h3>تصفية المنتجات</h3>
-                <button type="button" id="resetFilters" class="btn-reset-filters">
-                    مسح التصفية
-                </button>
-            </div>
-
-            <div class="filter-group">
-                <div class="filter-item">
-                    <label for="categoryFilter">الفئة</label>
-                    <select id="categoryFilter">
-                        <option value="all">جميع الفئات</option>
-                        <option value="phones">الهواتف</option>
-                        <option value="laptops">اللاب توب</option>
-                        <option value="accessories">الإكسسوارات</option>
-                    </select>
-                </div>
-
-                <div class="filter-item">
-                    <label for="priceFilter">السعر</label>
-                    <select id="priceFilter">
-                        <option value="all">جميع الأسعار</option>
-                        <option value="under500">أقل من 500 د.ل</option>
-                        <option value="500-1000">من 500 إلى 1000 د.ل</option>
-                        <option value="over1000">أكثر من 1000 د.ل</option>
-                    </select>
-                </div>
-
-                <div class="filter-item filter-search">
-                    <label for="searchInput">بحث</label>
-                    <input type="text" id="searchInput" placeholder="ابحث باسم المنتج أو نوعه...">
-                </div>
-            </div>
-
-            <!-- شريط صغير لعرض عدد النتائج بعد التصفية -->
-            <div class="filters-info">
-                <span id="activeFiltersText">جميع المنتجات معروضة حالياً</span>
-            </div>
+        <div class="cart-icon" onclick="window.location.href='cart.html'">
+          <i class="fas fa-shopping-cart"></i>
+          <span class="cart-count">0</span>
         </div>
-    </section>
 
-    <section class="products">
-        <div class="container">
-            <h2 class="section-title">
-                جميع المنتجات
-                <span id="productsCount">0</span>
-            </h2>
-            <div class="products-grid" id="productsGrid">
-                <!-- سيتم ملؤها بالـ JavaScript -->
-            </div>
+        <div class="menu-toggle">
+          <i class="fas fa-bars"></i>
         </div>
-    </section>
-
-    <!-- WhatsApp Button -->
-    <a href="https://wa.me/218931931419?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D9%86%D8%A7%20%D9%85%D9%87%D8%AA%D9%85%20%D8%A8%D8%B4%D8%B1%D8%A7%D8%A1%20" class="whatsapp-btn" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- Product Modal -->
-    <div id="productModal" class="product-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div id="productModalBody"></div>
-        </div>
+      </div>
     </div>
+  </header>
 
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 ميم نون. جميع الحقوق محفوظة. | بنغازي - ليبيا</p>
-            <div class="social-links">
-                <a href="javascript:void(0)"><i class="fab fa-facebook"></i></a>
-                <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/218931931419"><i class="fab fa-whatsapp"></i></a>
-            </div>
+  <!-- مسافة تحت الهيدر الثابت -->
+  <div style="height:80px"></div>
+
+  <!-- قسم الفلاتر -->
+  <section class="filters">
+    <div class="container">
+      <div class="filter-header">
+        <h3>تصفية المنتجات</h3>
+        <button type="button" class="btn-reset-filters" onclick="location.reload()">
+          مسح التصفية
+        </button>
+      </div>
+
+      <div class="filter-group">
+        <div class="filter-item">
+          <label for="categoryFilter">الفئة</label>
+          <select id="categoryFilter">
+            <option value="all">جميع الفئات</option>
+            <option value="phones">الهواتف</option>
+            <option value="laptops">اللاب توب</option>
+            <option value="accessories">الإكسسوارات</option>
+          </select>
         </div>
-    </footer>
 
-    <script src="script.js"></script>
+        <div class="filter-item">
+          <label for="priceFilter">السعر</label>
+          <select id="priceFilter">
+            <option value="all">جميع الأسعار</option>
+            <option value="0-500">أقل من 500 د.ل</option>
+            <option value="500-1500">من 500 إلى 1500 د.ل</option>
+            <option value="1500+">أكثر من 1500 د.ل</option>
+          </select>
+        </div>
+
+        <div class="filter-item">
+          <label for="searchInput">بحث</label>
+          <input id="searchInput" type="text" placeholder="اكتب اسم المنتج للبحث">
+        </div>
+      </div>
+
+      <p id="activeFiltersText" data-has-filters="false" class="filters-info">
+        جميع المنتجات معروضة حالياً
+      </p>
+    </div>
+  </section>
+
+  <!-- قائمة المنتجات -->
+  <section class="products">
+    <div class="container">
+      <h2 class="section-title">
+        جميع المنتجات <span id="productsCount">0</span>
+      </h2>
+
+      <div id="productsGrid" class="products-grid">
+        <!-- المنتجات تُحقن هنا من script.js -->
+      </div>
+    </div>
+  </section>
+
+  <!-- مودال عرض المنتج -->
+  <div id="productModal" class="product-modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div id="productModalBody"></div>
+    </div>
+  </div>
+
+  <!-- زر الواتساب العائم -->
+  <a href="https://wa.me/2180000000000" class="whatsapp-btn" target="_blank" rel="noopener">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- الفوتر -->
+  <footer class="footer">
+    <div class="container">
+      <p>© 2026 ميم نون. جميع الحقوق محفوظة.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- سكربت المتجر -->
+  <script src="script.js"></script>
 </body>
 </html>
