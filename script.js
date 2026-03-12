@@ -9,13 +9,14 @@ function getCurrentUser() {
     return null;
 }
 
+// بيانات المنتجات
 const products = [
     {id: 1, name: "آيفون 15 برو ماكس", price: 1250, category: "phones", img: "https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&w=400"},
     {id: 2, name: "سامسونج S24 ألترا", price: 1100, category: "phones", img: "https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=400"},
     {id: 3, name: "مايك بوك برو M3", price: 4500, category: "laptops", img: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=400"},
     {id: 4, name: "سماعات إيربودز برو", price: 320, category: "accessories", img: "https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?auto=compress&cs=tinysrgb&w=400"},
-      {id: 5, name: "ساعة أبل واتش", price: 650, category: "accessories", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"},
-      {id: 6, name: "لاب توب أسوس", price: 2200, category: "laptops", img: "https://images.unsplash.com/photo-1588702547923-7093a6c3b8e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"},
+    {id: 5, name: "ساعة أبل واتش", price: 650, category: "accessories", img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"},
+    {id: 6, name: "لاب توب أسوس", price: 2200, category: "laptops", img: "https://images.unsplash.com/photo-1588702547923-7093a6c3b8e5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=400&q=80"},
     {id: 7, name: "سماعة سوني واي فاي", price: 280, category: "accessories", img: "https://images.pexels.com/photos/373543/pexels-photo-373543.jpeg?auto=compress&cs=tinysrgb&w=400"},
     {id: 8, name: "شاحن لاسلكي 20W", price: 75, category: "accessories", img: "https://images.pexels.com/photos/394372/pexels-photo-394372.jpeg?auto=compress&cs=tinysrgb&w=400"},
     {id: 9, name: "سامسونج Z Fold6", price: 1850, category: "phones", img: "https://images.pexels.com/photos/3822864/pexels-photo-3822864.jpeg?auto=compress&cs=tinysrgb&w=400"},
@@ -39,6 +40,8 @@ function updateCartCounter() {
 // نظام السلة
 function addToCart(productId) {
     const product = products.find(p => p.id === productId);
+    if (!product) return;
+
     const existing = cart.find(item => item.id === productId);
     
     if (existing) {
@@ -61,63 +64,82 @@ function removeFromCart(productId) {
 
 function updateQuantity(productId, change) {
     const item = cart.find(item => item.id === productId);
-    if (item) {
-        item.quantity += change;
-        if (item.quantity <= 0) {
-            removeFromCart(productId);
-        } else {
-            localStorage.setItem('cart', JSON.stringify(cart));
-            updateCartCounter();
-            loadCartPage();
-        }
+    if (!item) return;
+
+    item.quantity += change;
+    if (item.quantity <= 0) {
+        removeFromCart(productId);
+    } else {
+        localStorage.setItem('cart', JSON.stringify(cart));
+        updateCartCounter();
+        loadCartPage();
     }
 }
 
 // عرض المنتجات مع التقييمات
 function renderProducts(productsToShow = products) {
     const grid = document.getElementById('productsGrid') || document.querySelector('.products-grid');
-    if (grid) {
-        grid.innerHTML = productsToShow.map(product => {
-            const productReviews = reviews[product.id] || [];
-            const avgStars = productReviews.length ? 
-                (productReviews.reduce((sum, r) => sum + r.stars, 0) / productReviews.length) : 0;
-            const roundedStars = Math.round(avgStars);
-            
-            return `
-                <div class="product-card" data-category="${product.category}" data-price="${product.price}">
-                    <img src="${product.img}" alt="${product.name}" loading="lazy">
-                    <h3>${product.name}</h3>
-                    <div class="price">${product.price.toLocaleString()} د.ل</div>
-                    <div class="product-actions">
-                        <button class="add-to-cart" onclick="addToCart(${product.id})">
-                            <i class="fas fa-cart-plus"></i> أضف للسلة
+    const productsCountEl = document.getElementById('productsCount');
+    const activeFiltersText = document.getElementById('activeFiltersText');
+
+    if (!grid) return;
+
+    grid.innerHTML = productsToShow.map(product => {
+        const productReviews = reviews[product.id] || [];
+        const avgStars = productReviews.length ? 
+            (productReviews.reduce((sum, r) => sum + r.stars, 0) / productReviews.length) : 0;
+        const roundedStars = Math.round(avgStars);
+        
+        return `
+            <div class="product-card" data-category="${product.category}" data-price="${product.price}">
+                <img src="${product.img}" alt="${product.name}" loading="lazy">
+                <h3>${product.name}</h3>
+                <div class="price">${product.price.toLocaleString()} د.ل</div>
+                <div class="product-actions">
+                    <button class="add-to-cart" onclick="addToCart(${product.id})">
+                        <i class="fas fa-cart-plus"></i> أضف للسلة
+                    </button>
+                    <button class="quick-view" onclick="openModal(${product.id})">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <div class="product-reviews" id="reviews-${product.id}">
+                    <div class="reviews-summary">
+                        <span class="stars">${'★'.repeat(roundedStars)}${'☆'.repeat(5-roundedStars)}</span>
+                        <button class="review-btn" onclick="showReviewForm(${product.id})">
+                            ${productReviews.length ? productReviews.length + ' تقييم' : 'أضف تقييم'}
                         </button>
-                        <button class="quick-view" onclick="openModal(${product.id})">
-                            <i class="fas fa-eye"></i>
-                        </button>
-                    </div>
-                    <div class="product-reviews" id="reviews-${product.id}">
-                        <div class="reviews-summary">
-                            <span class="stars">${'★'.repeat(roundedStars)}${'☆'.repeat(5-roundedStars)}</span>
-                            <button class="review-btn" onclick="showReviewForm(${product.id})">
-                                ${productReviews.length ? productReviews.length + ' تقييم' : 'أضف تقييم'}
-                            </button>
-                        </div>
-                    </div>
-                    <div class="review-form" id="reviewForm-${product.id}" style="display: none;">
-                        <div class="stars-rating">
-                            <span class="star" data-stars="5">★</span>
-                            <span class="star" data-stars="4">★</span>
-                            <span class="star" data-stars="3">★</span>
-                            <span class="star" data-stars="2">★</span>
-                            <span class="star" data-stars="1">★</span>
-                        </div>
-                        <textarea id="reviewComment-${product.id}" placeholder="شارك رأيك..."></textarea>
-                        <button class="submit-review" onclick="submitReview(${product.id})">إرسال التقييم</button>
                     </div>
                 </div>
-            `;
-        }).join('');
+                <div class="review-form" id="reviewForm-${product.id}" style="display: none;">
+                    <div class="stars-rating">
+                        <span class="star" data-stars="5">★</span>
+                        <span class="star" data-stars="4">★</span>
+                        <span class="star" data-stars="3">★</span>
+                        <span class="star" data-stars="2">★</span>
+                        <span class="star" data-stars="1">★</span>
+                    </div>
+                    <textarea id="reviewComment-${product.id}" placeholder="شارك رأيك..."></textarea>
+                    <button class="submit-review" onclick="submitReview(${product.id})">إرسال التقييم</button>
+                </div>
+            </div>
+        `;
+    }).join('');
+
+    // تحديث عداد عدد المنتجات
+    if (productsCountEl) {
+        productsCountEl.textContent = productsToShow.length;
+    }
+
+    // تحديث نص حالة الفلاتر
+    if (activeFiltersText) {
+        if (productsToShow.length === products.length) {
+            activeFiltersText.textContent = 'جميع المنتجات معروضة حالياً';
+        } else if (productsToShow.length === 0) {
+            activeFiltersText.textContent = 'لا توجد منتجات مطابقة للتصفية الحالية';
+        } else {
+            activeFiltersText.textContent = `تم العثور على ${productsToShow.length} منتج/منتجات مطابقة`;
+        }
     }
 }
 
@@ -127,16 +149,31 @@ function filterProducts() {
     const price = document.getElementById('priceFilter')?.value || 'all';
     const search = document.getElementById('searchInput')?.value.toLowerCase() || '';
 
-    let filtered = products.filter(product => {
+    const filtered = products.filter(product => {
         const matchCategory = category === 'all' || product.category === category;
-        const matchPrice = price === 'all' || 
+        const matchPrice =
+            price === 'all' ||
             (price === 'under500' && product.price < 500) ||
             (price === '500-1000' && product.price >= 500 && product.price <= 1000) ||
             (price === 'over1000' && product.price > 1000);
         const matchSearch = product.name.toLowerCase().includes(search);
         return matchCategory && matchPrice && matchSearch;
     });
+
     renderProducts(filtered);
+}
+
+// إعادة تعيين الفلاتر
+function resetFilters() {
+    const categoryFilter = document.getElementById('categoryFilter');
+    const priceFilter = document.getElementById('priceFilter');
+    const searchInput = document.getElementById('searchInput');
+
+    if (categoryFilter) categoryFilter.value = 'all';
+    if (priceFilter) priceFilter.value = 'all';
+    if (searchInput) searchInput.value = '';
+
+    renderProducts(products);
 }
 
 // نظام التقييمات
@@ -162,17 +199,22 @@ function showReviewForm(productId) {
 }
 
 function submitReview(productId) {
-    const stars = document.querySelector(`#reviewForm-${productId} .star.active`);
-    const comment = document.getElementById(`reviewComment-${productId}`).value.trim();
+    const activeStar = document.querySelector(`#reviewForm-${productId} .star.active`);
+    const commentInput = document.getElementById(`reviewComment-${productId}`);
+    if (!commentInput) return;
+
+    const comment = commentInput.value.trim();
     
-    if (!stars || !comment) {
+    if (!activeStar || !comment) {
         showToast('⚠️ يجب اختيار تقييم وكتابة تعليق');
         return;
     }
     
-    addReview(productId, stars.dataset.stars, comment);
-    document.getElementById(`reviewComment-${productId}`).value = '';
-    document.querySelectorAll(`#reviewForm-${productId} .star`).forEach(s => s.classList.remove('active'));
+    addReview(productId, activeStar.dataset.stars, comment);
+    commentInput.value = '';
+    document
+        .querySelectorAll(`#reviewForm-${productId} .star`)
+        .forEach(s => s.classList.remove('active'));
     document.getElementById(`reviewForm-${productId}`).style.display = 'none';
     renderProducts(); // إعادة تحميل المنتجات لعرض التقييم الجديد
 }
@@ -181,20 +223,22 @@ function submitReview(productId) {
 function openModal(productId) {
     const product = products.find(p => p.id === productId);
     const modalBody = document.getElementById('productModalBody');
-    if (modalBody && product) {
-        modalBody.innerHTML = `
-            <div class="modal-product">
-                <img src="${product.img}" alt="${product.name}">
-                <div class="modal-info">
-                    <h2>${product.name}</h2>
-                    <div class="price">${product.price.toLocaleString()} د.ل</div>
-                    <p>منتج عالي الجودة بأفضل الأسعار في ليبيا</p>
-                    <button onclick="addToCart(${product.id})" class="add-to-cart">أضف للسلة</button>
-                </div>
+    const modal = document.getElementById('productModal');
+
+    if (!product || !modalBody || !modal) return;
+
+    modalBody.innerHTML = `
+        <div class="modal-product">
+            <img src="${product.img}" alt="${product.name}">
+            <div class="modal-info">
+                <h2>${product.name}</h2>
+                <div class="price">${product.price.toLocaleString()} د.ل</div>
+                <p>منتج عالي الجودة بأفضل الأسعار في ليبيا</p>
+                <button onclick="addToCart(${product.id})" class="add-to-cart">أضف للسلة</button>
             </div>
-        `;
-        document.getElementById('productModal').style.display = 'block';
-    }
+        </div>
+    `;
+    modal.style.display = 'block';
 }
 
 // صفحة السلة
@@ -213,12 +257,12 @@ function loadCartPage() {
     renderCartItems(cart);
 }
 
-function renderCartItems(cart) {
+function renderCartItems(cartArr) {
     const cartRows = document.getElementById('cartRows');
     if (!cartRows) return;
     
     let subtotal = 0;
-    cartRows.innerHTML = cart.map(item => {
+    cartRows.innerHTML = cartArr.map(item => {
         const total = item.price * item.quantity;
         subtotal += total;
         return `
@@ -247,8 +291,11 @@ function renderCartItems(cart) {
     }).join('');
     
     const shipping = 15;
-    document.getElementById('subtotal').textContent = subtotal.toLocaleString() + ' د.ل';
-    document.getElementById('total').textContent = (subtotal + shipping).toLocaleString() + ' د.ل';
+    const subtotalEl = document.getElementById('subtotal');
+    const totalEl = document.getElementById('total');
+
+    if (subtotalEl) subtotalEl.textContent = subtotal.toLocaleString() + ' د.ل';
+    if (totalEl) totalEl.textContent = (subtotal + shipping).toLocaleString() + ' د.ل';
 }
 
 // نظام المستخدمين
@@ -256,21 +303,21 @@ function checkUserLogin() {
     const user = JSON.parse(localStorage.getItem('currentUser'));
     const userNameEl = document.getElementById('userName');
     
-    if (userNameEl && user) {
+    if (userNameEl && user && user.email) {
         userNameEl.textContent = user.email.split('@')[0];
     }
 }
 
 function toggleUserMenu() {
     const user = JSON.parse(localStorage.getItem('currentUser'));
-    if (user) {
+    if (user && user.email) {
         showToast('مرحباً ' + user.email.split('@')[0]);
     } else {
         window.location.href = 'login.html';
     }
 }
 
-// القوائم والتفاعلات
+// التوست
 function showToast(message) {
     const toast = document.createElement('div');
     toast.className = 'toast';
@@ -289,7 +336,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const nav = document.querySelector('.nav');
     if (menuToggle && nav) {
         menuToggle.addEventListener('click', () => {
-            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+            nav.style.display = (nav.style.display === 'flex') ? 'none' : 'flex';
         });
     }
     
@@ -297,12 +344,14 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoryFilter = document.getElementById('categoryFilter');
     const priceFilter = document.getElementById('priceFilter');
     const searchInput = document.getElementById('searchInput');
+    const resetFiltersBtn = document.getElementById('resetFilters');
     
     if (categoryFilter) categoryFilter.addEventListener('change', filterProducts);
     if (priceFilter) priceFilter.addEventListener('change', filterProducts);
     if (searchInput) searchInput.addEventListener('input', filterProducts);
+    if (resetFiltersBtn) resetFiltersBtn.addEventListener('click', resetFilters);
     
-    // عرض المنتجات
+    // عرض المنتجات في صفحة المنتجات
     if (document.getElementById('productsGrid') || document.querySelector('.products-grid')) {
         renderProducts();
     }
@@ -314,14 +363,19 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // إغلاق Modal
     document.addEventListener('click', (e) => {
+        const modal = document.getElementById('productModal');
+        if (!modal) return;
+
         if (e.target.classList.contains('product-modal') || e.target.classList.contains('close-modal')) {
-            document.getElementById('productModal').style.display = 'none';
+            modal.style.display = 'none';
         }
     });
 
+    // Service Worker لـ PWA (يتطلب المسار الصحيح للملف)
     if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js');
+        navigator.serviceWorker.register('/sw.js').catch(() => {});
     }
+
     // نجوم التقييم
     document.addEventListener('click', function(e) {
         if (e.target.classList.contains('star')) {
