@@ -92,74 +92,19 @@
                     </div>
 
                     <div class="checkout-actions">
-    <button class="clear-cart" id="clearCart">إفراغ السلة</button>
-    <div style="display: flex; gap: 10px; flex-wrap: wrap;">
-        <button class="cta-btn checkout-btn" onclick="checkoutWhatsApp()">
-            <i class="fab fa-whatsapp"></i> إتمام عبر واتساب
-        </button>
-        <button class="cta-btn checkout-btn" onclick="checkoutMessenger()">
-            <i class="fab fa-facebook-messenger"></i> إتمام عبر ماسنجر
-        </button>
-    </div>
-</div>
+                        <button class="clear-cart" id="clearCart">إفراغ السلة</button>
+                        <a 
+                            href="https://wa.me/218931931419?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A5%D8%AA%D9%85%D8%A7%D9%85%20%D8%B7%D9%84%D8%A8%D9%8A%20%D9%85%D9%86%20%D9%85%D8%AA%D8%AC%D8%B1%20%D9%85%D9%8A%D9%85%20%D9%86%D9%88%D9%86"
+                            class="cta-btn checkout-btn"
+                            target="_blank"
+                            rel="noopener"
+                        >
+                            إتمام الطلب <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- زر واتساب عائم عام -->
-    <a href="https://wa.me/218931931419?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%B3%D9%84%D8%A9%20%D8%A7%D9%84%D8%AA%D8%B3%D9%88%D9%82"
-       class="whatsapp-btn" target="_blank" rel="noopener">
-        <i class="fab fa-whatsapp"></i>
-    </a>
-
-    <!-- مودال المنتج (نفس الموجود في الصفحات الأخرى) -->
-    <div id="productModal" class="product-modal">
-        <div class="modal-content">
-            <span class="close-modal">&times;</span>
-            <div id="productModalBody"></div>
-        </div>
-    </div>
-
-    <!-- الفوتر -->
-    <footer class="footer">
-        <div class="container">
-            <p>&copy; 2026 ميم نون. جميع الحقوق محفوظة.</p>
-            <div class="social-links">
-                <a href="javascript:void(0)"><i class="fab fa-facebook"></i></a>
-                <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
-                <a href="https://wa.me/218931931419"><i class="fab fa-whatsapp"></i></a>
-            </div>
-        </div>
-    </footer>
-
-    <!-- سكربت رئيسي -->
-    <script src="script.js"></script>
-
-    <!-- سكربت صغير خاص بإفراغ السلة (يعتمد على دوال script.js) -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            // تحميل السلة (الدالة موجودة في script.js)
-            if (typeof loadCartPage === 'function') {
-                loadCartPage();
-            }
-
-            const clearCartBtn = document.getElementById('clearCart');
-            if (clearCartBtn) {
-                clearCartBtn.addEventListener('click', function () {
-                    localStorage.removeItem('cart');
-                    if (typeof loadCartPage === 'function') {
-                        loadCartPage();
-                    }
-                    if (typeof showToast === 'function') {
-                        showToast('تم إفراغ السلة');
-                    }
-                });
-            }
-        });
-    </script>
-</body>
-</html>
     </section>
 
     <!-- زر واتساب عائم عام -->
