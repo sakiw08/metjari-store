@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>تسجيل الدخول - ميم نون</title>
+    <meta name="description" content="تسجيل الدخول أو إنشاء حساب جديد في متجر ميم نون لمتابعة طلباتك وتجربة تسوق أفضل.">
+
+    <!-- PWA -->
+    <meta name="theme-color" content="#667eea">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <!-- الخطوط والأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- النمط -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- الهيدر الموحد -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h2><i class="fas fa-store"></i> ميم نون</h2>
+            </div>
+            <nav class="nav">
+                <a href="index.html">الرئيسية</a>
+                <a href="products.html">المنتجات</a>
+                <a href="cart.html">سلة التسوق</a>
+                <a href="about.html">عن المتجر</a>
+                <a href="contact.html">اتصل بنا</a>
+            </nav>
+            <div class="user-menu" onclick="toggleUserMenu()">
+                <i class="fas fa-user"></i>
+                <span id="userName">الدخول</span>
+            </div>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- قسم المصادقة -->
+    <section class="auth-section">
+        <div class="container">
+            <div class="auth-container">
+                <div class="auth-tabs">
+                    <button class="tab-btn active" data-tab="login">تسجيل الدخول</button>
+                    <button class="tab-btn" data-tab="register">إنشاء حساب</button>
+                </div>
+                
+                <!-- تبويب تسجيل الدخول -->
+                <div id="loginTab" class="auth-tab active">
+                    <h2>مرحباً بعودتك</h2>
+                    <p>قم بتسجيل الدخول لإدارة طلباتك</p>
+                    <form id="loginForm">
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="loginEmail" placeholder="البريد الإلكتروني" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="loginPassword" placeholder="كلمة المرور" required>
+                        </div>
+                        <button type="submit" class="auth-btn">تسجيل الدخول</button>
+                    </form>
+                </div>
+
+                <!-- تبويب إنشاء حساب -->
+                <div id="registerTab" class="auth-tab">
+                    <h2>إنشاء حساب جديد</h2>
+                    <p>سجل معنا للحصول على تجربة تسوق أفضل</p>
+                    <form id="registerForm">
+                        <div class="input-group">
+                            <i class="fas fa-user"></i>
+                            <input type="text" id="regName" placeholder="الاسم الكامل" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-phone"></i>
+                            <input type="tel" id="regPhone" placeholder="رقم الهاتف" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-envelope"></i>
+                            <input type="email" id="regEmail" placeholder="البريد الإلكتروني" required>
+                        </div>
+                        <div class="input-group">
+                            <i class="fas fa-lock"></i>
+                            <input type="password" id="regPassword" placeholder="كلمة المرور" required>
+                        </div>
+                        <button type="submit" class="auth-btn">إنشاء الحساب</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر الموحد -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ميم نون. جميع الحقوق محفوظة.</p>
+            <div class="social-links">
+                <a href="javascript:void(0)"><i class="fab fa-facebook"></i></a>
+                <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/218931931419"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // مساعد: جلب المستخدمين من localStorage
+        function getUsers() {
+            return JSON.parse(localStorage.getItem('users')) || [];
+        }
+
+        // تبويب تسجيل الدخول / إنشاء حساب
+        function setupAuthTabs() {
+            const tabButtons = document.querySelectorAll('.tab-btn');
+            const tabs = document.querySelectorAll('.auth-tab');
+
+            tabButtons.forEach(btn => {
+                btn.addEventListener('click', function () {
+                    const target = this.dataset.tab; // login أو register
+
+                    // إخفاء كل التبويبات
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabButtons.forEach(b => b.classList.remove('active'));
+
+                    // إظهار التبويب المختار
+                    const tabEl = document.getElementById(target + 'Tab');
+                    if (tabEl) tabEl.classList.add('active');
+                    this.classList.add('active');
+                });
+            });
+        }
+
+        // إعداد نماذج تسجيل الدخول والتسجيل
+        function setupAuthForms() {
+            const loginForm = document.getElementById('loginForm');
+            const registerForm = document.getElementById('registerForm');
+
+            if (loginForm) {
+                loginForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const email = document.getElementById('loginEmail').value.trim();
+                    const password = document.getElementById('loginPassword').value.trim();
+
+                    const users = getUsers();
+                    const existing = users.find(u => u.email === email && u.password === password);
+
+                    if (!existing) {
+                        if (typeof showToast === 'function') {
+                            showToast('⚠️ البريد الإلكتروني أو كلمة المرور غير صحيحة');
+                        }
+                        return;
+                    }
+
+                    const userToStore = {
+                        email: existing.email,
+                        name: existing.name || '',
+                        phone: existing.phone || '',
+                        loginTime: new Date()
+                    };
+
+                    localStorage.setItem('currentUser', JSON.stringify(userToStore));
+                    if (typeof showToast === 'function') {
+                        showToast('✅ تم تسجيل الدخول بنجاح');
+                    }
+                    setTimeout(() => {
+                        window.location.href = 'index.html';
+                    }, 800);
+                });
+            }
+
+            if (registerForm) {
+                registerForm.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const user = {
+                        name: document.getElementById('regName').value.trim(),
+                        phone: document.getElementById('regPhone').value.trim(),
+                        email: document.getElementById('regEmail').value.trim(),
+                        password: document.getElementById('regPassword').value.trim(),
+                        registerTime: new Date()
+                    };
+
+                    const users = getUsers();
+                    const exists = users.some(u => u.email === user.email);
+                    if (exists) {
+                        if (typeof showToast === 'function') {
+                            showToast('⚠️ هذا البريد مسجل بالفعل، استخدم تسجيل الدخول');
+                        }
+                        return;
+                    }
+
+                    localStorage.setItem('users', JSON.stringify([...users, user]));
+                    if (typeof showToast === 'function') {
+                        showToast('✅ تم إنشاء الحساب بنجاح، يمكنك الآن تسجيل الدخول');
+                    }
+
+                    // الانتقال تلقائياً لتبويب تسجيل الدخول
+                    const loginTabBtn = document.querySelector('.tab-btn[data-tab="login"]');
+                    if (loginTabBtn) loginTabBtn.click();
+                });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            setupAuthTabs();
+            setupAuthForms();
+        });
+    </script>
+</body>
+</html>

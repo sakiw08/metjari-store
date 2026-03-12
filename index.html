@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+
+    <!-- SEO أساسي -->
+    <title>ميم نون - أفضل الأسعار في ليبيا | شحن سريع ودفع عند الاستلام</title>
+    <meta name="description" content="تسوق أفضل المنتجات الإلكترونية بأسعار مميزة في ليبيا. شحن سريع، دفع عند الاستلام، وضمان جودة على جميع المنتجات.">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- PWA -->
+    <meta name="theme-color" content="#667eea">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <!-- Open Graph لمشاركة الصفحة -->
+    <meta property="og:title" content="ميم نون - أفضل الأسعار في ليبيا">
+    <meta property="og:description" content="تسوق منتجات عالية الجودة بأسعار تنافسية مع شحن سريع داخل ليبيا.">
+    <meta property="og:image" content="https://sakiw08.github.io/metjari-store/icon-512.png">
+    <meta property="og:url" content="https://sakiw08.github.io/metjari-store/index.html">
+
+    <!-- تحميل سريع -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+
+    <!-- الخطوط والأيقونات -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- النمط -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- الهيدر موحّد مع باقي الصفحات -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <h2><i class="fas fa-store"></i> ميم نون</h2>
+            </div>
+            <nav class="nav">
+                <a href="index.html" class="active">الرئيسية</a>
+                <a href="products.html">المنتجات</a>
+                <a href="cart.html">سلة التسوق</a>
+                <a href="about.html">عن المتجر</a>
+                <a href="contact.html">اتصل بنا</a>
+            </nav>
+            <div class="user-menu" onclick="toggleUserMenu()">
+                <i class="fas fa-user"></i>
+                <span id="userName">الدخول</span>
+            </div>
+            <div class="menu-toggle"><i class="fas fa-bars"></i></div>
+        </div>
+    </header>
+
+    <!-- قسم البطل (الهيرو) -->
+    <section id="home" class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <h1>أفضل الأسعار في ليبيا</h1>
+                <p>تسوق منتجات إلكترونية عالية الجودة بأسعار تنافسية، مع شحن سريع ودفع عند الاستلام.</p>
+                <a href="products.html" class="cta-btn">تسوق الآن</a>
+            </div>
+            <!-- يمكنك إضافة صورة جانبية هنا لاحقاً إن أحببت -->
+        </div>
+    </section>
+
+    <!-- قسم المنتجات المميزة -->
+    <section id="featured-products" class="products">
+        <div class="container">
+            <h2 class="section-title">منتجاتنا المميزة</h2>
+            <div class="products-grid">
+                <div class="product-card">
+                    <img src="https://images.pexels.com/photos/788946/pexels-photo-788946.jpeg?auto=compress&cs=tinysrgb&w=400" alt="آيفون 15 برو">
+                    <h3>آيفون 15 برو</h3>
+                    <div class="price">1,250 د.ل</div>
+                    <a href="products.html" class="add-to-cart">عرض كل الهواتف</a>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://images.pexels.com/photos/461198/pexels-photo-461198.jpeg?auto=compress&cs=tinysrgb&w=400" alt="سامسونج S24 ألترا">
+                    <h3>سامسونج S24 ألترا</h3>
+                    <div class="price">1,100 د.ل</div>
+                    <a href="products.html" class="add-to-cart">عرض كل الهواتف</a>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg?auto=compress&cs=tinysrgb&w=400" alt="ماك بوك برو M3">
+                    <h3>ماك بوك برو M3</h3>
+                    <div class="price">4,500 د.ل</div>
+                    <a href="products.html" class="add-to-cart">عرض كل اللاب توبات</a>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://images.pexels.com/photos/1649771/pexels-photo-1649771.jpeg?auto=compress&cs=tinysrgb&w=400" alt="سماعات إيربودز برو">
+                    <h3>إيربودز برو</h3>
+                    <div class="price">320 د.ل</div>
+                    <a href="products.html" class="add-to-cart">عرض كل الإكسسوارات</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- زر واتساب ثابت -->
+    <a href="https://wa.me/218931931419?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20الاستفسار%20عن%20منتجات%20متجر%20%D9%85%D9%8A%D9%85%20%D9%86%D9%88%D9%86" class="whatsapp-btn" target="_blank" rel="noopener">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 ميم نون. جميع الحقوق محفوظة.</p>
+            <div class="social-links">
+                <a href="javascript:void(0)"><i class="fab fa-facebook"></i></a>
+                <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/218931931419"><i class="fab fa-whatsapp"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
