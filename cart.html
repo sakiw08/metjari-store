@@ -3,13 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>سلة التسوق - ميم نون</title>
+    <meta name="description" content="راجع سلة التسوق الخاصة بك في متجر ميم نون وأكمل طلبك بسهولة عبر واتساب.">
+
+    <!-- PWA -->
+    <meta name="theme-color" content="#667eea">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="style.css">
+    <link rel="apple-touch-icon" href="icon-192.png">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="سلة التسوق - ميم نون">
+    <meta property="og:description" content="شاهد المنتجات التي أضفتها لسلة التسوق وأكمل الطلب بسهولة.">
+    <meta property="og:image" content="https://sakiw08.github.io/metjari-store/icon-512.png">
+    <meta property="og:url" content="https://sakiw08.github.io/metjari-store/cart.html">
+
+    <!-- تحميل سريع -->
+    <link rel="preload" href="style.css" as="style">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+
+    <!-- الخطوط والأيقونات -->
     <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- النمط -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- هيدر موحّد -->
     <header class="header">
         <div class="container">
             <div class="logo">
@@ -18,7 +39,7 @@
             <nav class="nav">
                 <a href="index.html">الرئيسية</a>
                 <a href="products.html">المنتجات</a>
-                <a href="cart.html">سلة التسوق</a>
+                <a href="cart.html" class="active">سلة التسوق</a>
                 <a href="about.html">عن المتجر</a>
                 <a href="contact.html">اتصل بنا</a>
             </nav>
@@ -30,15 +51,20 @@
         </div>
     </header>
 
+    <!-- سلة التسوق -->
     <section class="cart-section">
         <div class="container">
             <h2 class="section-title">سلة التسوق</h2>
+
+            <!-- حالة السلة الفارغة -->
             <div id="cartEmpty" class="cart-empty">
                 <i class="fas fa-shopping-cart" style="font-size: 5rem; color: #ddd;"></i>
                 <h3>سلة التسوق فارغة</h3>
                 <p>لم تقم بإضافة أي منتجات بعد</p>
                 <a href="products.html" class="cta-btn">تسوق الآن</a>
             </div>
+
+            <!-- حالة وجود عناصر في السلة -->
             <div id="cartItems" class="cart-items" style="display: none;">
                 <div class="cart-table">
                     <div class="cart-header">
@@ -50,6 +76,7 @@
                     </div>
                     <div id="cartRows"></div>
                 </div>
+
                 <div class="cart-summary">
                     <div class="summary-row">
                         <span>المجموع الفرعي:</span>
@@ -63,9 +90,15 @@
                         <span>الإجمالي:</span>
                         <span id="total">0 د.ل</span>
                     </div>
+
                     <div class="checkout-actions">
                         <button class="clear-cart" id="clearCart">إفراغ السلة</button>
-                        <a href="https://wa.me/218931931419?text=مرحبا، أريد إتمام طلبي" class="cta-btn checkout-btn">
+                        <a 
+                            href="https://wa.me/218931931419?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A5%D8%AA%D9%85%D8%A7%D9%85%20%D8%B7%D9%84%D8%A8%D9%8A%20%D9%85%D9%86%20%D9%85%D8%AA%D8%AC%D8%B1%20%D9%85%D9%8A%D9%85%20%D9%86%D9%88%D9%86"
+                            class="cta-btn checkout-btn"
+                            target="_blank"
+                            rel="noopener"
+                        >
                             إتمام الطلب <i class="fab fa-whatsapp"></i>
                         </a>
                     </div>
@@ -74,10 +107,13 @@
         </div>
     </section>
 
-    <a href="https://wa.me/218931931419" class="whatsapp-btn" target="_blank">
+    <!-- زر واتساب عائم عام -->
+    <a href="https://wa.me/218931931419?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A7%D9%84%D8%A7%D8%B3%D8%AA%D9%81%D8%B3%D8%A7%D8%B1%20%D8%B9%D9%86%20%D8%B3%D9%84%D8%A9%20%D8%A7%D9%84%D8%AA%D8%B3%D9%88%D9%82"
+       class="whatsapp-btn" target="_blank" rel="noopener">
         <i class="fab fa-whatsapp"></i>
     </a>
 
+    <!-- مودال المنتج (نفس الموجود في الصفحات الأخرى) -->
     <div id="productModal" class="product-modal">
         <div class="modal-content">
             <span class="close-modal">&times;</span>
@@ -85,74 +121,41 @@
         </div>
     </div>
 
+    <!-- الفوتر -->
     <footer class="footer">
         <div class="container">
             <p>&copy; 2026 ميم نون. جميع الحقوق محفوظة.</p>
             <div class="social-links">
-                <a href="#"><i class="fab fa-facebook"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="javascript:void(0)"><i class="fab fa-facebook"></i></a>
+                <a href="javascript:void(0)"><i class="fab fa-instagram"></i></a>
+                <a href="https://wa.me/218931931419"><i class="fab fa-whatsapp"></i></a>
             </div>
         </div>
     </footer>
 
+    <!-- سكربت رئيسي -->
     <script src="script.js"></script>
+
+    <!-- سكربت صغير خاص بإفراغ السلة (يعتمد على دوال script.js) -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            loadCartPage();
-        });
-
-        function loadCartPage() {
-            const cart = JSON.parse(localStorage.getItem('cart')) || [];
-            if (cart.length === 0) {
-                document.getElementById('cartEmpty').style.display = 'block';
-                document.getElementById('cartItems').style.display = 'none';
-                return;
+        document.addEventListener('DOMContentLoaded', function () {
+            // تحميل السلة (الدالة موجودة في script.js)
+            if (typeof loadCartPage === 'function') {
+                loadCartPage();
             }
-            document.getElementById('cartEmpty').style.display = 'none';
-            document.getElementById('cartItems').style.display = 'block';
-            renderCartItems(cart);
-        }
 
-        function renderCartItems(cart) {
-            const cartRows = document.getElementById('cartRows');
-            let subtotal = 0;
-            cartRows.innerHTML = cart.map(item => {
-                const total = item.price * item.quantity;
-                subtotal += total;
-                return `
-                    <div class="cart-row">
-                        <div class="cart-product">
-                            <img src="${item.img}" alt="${item.name}">
-                            <div>
-                                <h4>${item.name}</h4>
-                                <p>${item.price} د.ل / قطعة</p>
-                            </div>
-                        </div>
-                        <div class="cart-price">${item.price} د.ل</div>
-                        <div class="cart-quantity">
-                            <button onclick="updateQuantity(${item.id}, -1)">-</button>
-                            <span>${item.quantity}</span>
-                            <button onclick="updateQuantity(${item.id}, 1)">+</button>
-                        </div>
-                        <div class="cart-total">${total} د.ل</div>
-                        <div class="cart-remove">
-                            <button onclick="removeFromCart(${item.id})" class="remove-btn">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-            const shipping = 15;
-            document.getElementById('subtotal').textContent = subtotal + ' د.ل';
-            document.getElementById('total').textContent = (subtotal + shipping) + ' د.ل';
-        }
-
-        document.getElementById('clearCart')?.addEventListener('click', function() {
-            localStorage.removeItem('cart');
-            loadCartPage();
-            showToast('تم إفراغ السلة');
+            const clearCartBtn = document.getElementById('clearCart');
+            if (clearCartBtn) {
+                clearCartBtn.addEventListener('click', function () {
+                    localStorage.removeItem('cart');
+                    if (typeof loadCartPage === 'function') {
+                        loadCartPage();
+                    }
+                    if (typeof showToast === 'function') {
+                        showToast('تم إفراغ السلة');
+                    }
+                });
+            }
         });
     </script>
 </body>
