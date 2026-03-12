@@ -11,8 +11,8 @@ const ASSETS_TO_CACHE = [
   './style.css',
   './script.js',
   './manifest.json',
-  './icon-192.jpeg',
-  './icon-512.jpeg'
+  './icon-192.png',
+  './icon-512.png'
 ];
 
 // تثبيت Service Worker وتخزين الملفات الأساسية
